@@ -1,0 +1,42 @@
+# LaTeX Build-Artefakte
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdy
+
+# PDFs werden mitversioniert — falls du das nicht willst, hier ergänzen:
+# *.pdf
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor-Backups
+*.bak
+*~
+.*.swp
+
+# KI-Tool Worktrees (Claude Code agenten-features)
+# .claude/skills/ ist explizit getrackt — siehe weiter unten
+.claude/worktrees/
+
+# Persönliche KI-Erklärung (falls vorhanden, optional separat versionieren)
+# ki-erklaerung.md

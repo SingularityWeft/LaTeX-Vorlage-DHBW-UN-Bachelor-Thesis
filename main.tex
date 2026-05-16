@@ -1,0 +1,383 @@
+\documentclass[11pt,a4paper,oneside]{book}
+\PassOptionsToPackage{multiple}{footmisc}
+
+% ============================================================================
+% LaTeX-Vorlage — DHBW Bachelor-Thesis (Studiengang Unternehmertum)
+% ----------------------------------------------------------------------------
+% Diese Vorlage ist als ausführbares Skelett gebaut: sie kompiliert sofort
+% und produziert eine vollständige PDF mit Deckblatt, Inhaltsverzeichnis,
+% drei Beispiel-Kapiteln, Bibliographie- und Glossar-Stub.
+%
+% Ersetze die mit %% PLACEHOLDER markierten Stellen durch deine eigenen
+% Inhalte. Kompilier-Anleitung: siehe README.md im Repo-Root.
+% ============================================================================
+
+% =====================================================================
+% PAKETE
+% =====================================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Layout (DHBW: 2cm links/oben/unten, 3cm rechts als Korrekturrand)
+\usepackage{geometry}
+\geometry{a4paper, left=2cm, right=3cm, top=2cm, bottom=2cm}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parskip}{6pt}
+
+% Grafiken & Tabellen
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{float}
+
+% DHBW-Farben
+\usepackage{xcolor}
+\definecolor{dhbwblue}{RGB}{0,59,122}
+\definecolor{dhbwgray}{RGB}{128,128,128}
+
+% Hyperlinks
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    pdftitle={Titel der Arbeit},                    %% PLACEHOLDER
+    pdfauthor={Vorname Nachname},                   %% PLACEHOLDER
+    pdfsubject={Bachelor-Thesis DHBW, Studiengang Unternehmertum},  %% PLACEHOLDER ggf. anpassen
+    pdfkeywords={Stichwort1, Stichwort2, Stichwort3}                 %% PLACEHOLDER
+}
+
+% Kopf- und Fußzeilen
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% Bibliographie
+\usepackage[backend=biber,style=authoryear,sorting=nyt,maxnames=2,uniquename=init]{biblatex}
+\addbibresource{literatur.bib}
+
+% Glossar & Abkürzungsverzeichnis
+\usepackage[acronym,toc,numberedsection=autolabel]{glossaries}
+\makeglossaries
+
+% Zitate
+\usepackage{csquotes}
+
+% Mathematik (falls benötigt)
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Listen
+\usepackage{enumitem}
+
+% Verzeichnisse ins Inhaltsverzeichnis
+\usepackage[nottoc]{tocbibind}
+
+% Fußnoten-Formatierung (DHBW: 9pt, sans-serif, durchgehend nummeriert)
+\usepackage[bottom,hang,flushmargin]{footmisc}
+\renewcommand{\footnotelayout}{\sffamily\fontsize{9}{10.8}\selectfont}
+\setlength{\footnotesep}{0.5cm}
+\setlength{\skip\footins}{12pt}
+\counterwithout{footnote}{chapter}
+
+% TikZ für eigene Diagramme
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows, arrows.meta, decorations.pathreplacing, shadows, calc}
+
+% Mikrotypografie
+\usepackage{microtype}
+
+% Querformat für breite Tabellen
+\usepackage{pdflscape}
+
+% Caption-Formatierung
+\usepackage{caption}
+\captionsetup[longtable]{justification=raggedright,singlelinecheck=false}
+
+% Optional: jeder Abbildung automatisch "Quelle: eigene Darstellung" anhängen.
+% Auskommentieren oder löschen, falls nicht gewünscht.
+\DeclareCaptionFormat{figurefmt}{#1#2#3\par\textit{Quelle: eigene Darstellung}}
+\captionsetup[figure]{format=figurefmt}
+
+% Titel-Formatierung
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+\titleformat{\subsection}[hang]
+  {\normalfont\large\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{12pt plus 2pt minus 2pt}{6pt plus 1pt minus 1pt}
+
+% =====================================================================
+% GLOSSAR-EINTRÄGE (Beispiele — anpassen oder erweitern)
+% =====================================================================
+
+\newglossaryentry{beispielbegriff}{
+    name={Beispielbegriff},
+    description={Hier kommt die Definition des Begriffs. Wird automatisch
+                 ins Glossar übernommen, wenn du im Text \texttt{\textbackslash gls\{beispielbegriff\}}
+                 schreibst.}
+}
+
+\newacronym{abk}{ABK}{Ausgeschriebene Abkürzung}
+\newacronym{dhbw}{DHBW}{Duale Hochschule Baden-Württemberg}
+
+% =====================================================================
+% DOKUMENT
+% =====================================================================
+
+\begin{document}
+
+% ---------------------------------------------------------------------
+% FRONTMATTER: Deckblatt, Erklärung, Inhaltsverzeichnis, Verzeichnisse
+% ---------------------------------------------------------------------
+\frontmatter
+\pagestyle{empty}
+
+% --- Deckblatt (PLACEHOLDER — an DHBW-Vorgaben deines Standorts anpassen) ---
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+
+    % Hier optional das DHBW-Logo einbinden, sobald du es ergänzt hast:
+    % \includegraphics[width=5cm]{dhbw-logo.png}
+    {\Large\bfseries Duale Hochschule Baden-Württemberg [Standort]\par}  %% PLACEHOLDER
+    {\large Studiengang Unternehmertum\par}                              %% PLACEHOLDER ggf. anpassen
+    \vspace{2cm}
+
+    {\Huge\bfseries [Titel der Arbeit]\par}                       %% PLACEHOLDER
+    \vspace{0.5cm}
+    {\Large [Untertitel der Arbeit, optional]\par}                %% PLACEHOLDER
+    \vspace{2cm}
+
+    {\large Bachelor-Thesis\par}
+    \vspace{1cm}
+
+    {\large von\par}
+    {\Large\bfseries [Vorname Nachname]\par}                      %% PLACEHOLDER
+
+    \vfill
+
+    \begin{tabular}{ll}
+        Matrikelnummer:           & \texttt{[XXXXXXX]} \\          %% PLACEHOLDER
+        Kurs:                     & [WUNXXXX] \\                   %% PLACEHOLDER
+        Betreuende(r) Dozent(in): & [Prof. Dr. Vorname Nachname] \\ %% PLACEHOLDER
+        Abgabedatum:              & [TT.MM.JJJJ] \\                %% PLACEHOLDER
+    \end{tabular}
+\end{titlepage}
+
+\cleardoublepage
+\pagestyle{fancy}
+
+% --- Inhaltsverzeichnis ---
+\tableofcontents
+\cleardoublepage
+
+% --- Abbildungs- und Tabellenverzeichnis (optional, einkommentieren wenn nötig) ---
+% \listoffigures
+% \listoftables
+% \cleardoublepage
+
+% --- Abkürzungsverzeichnis ---
+\printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}]
+\cleardoublepage
+
+% ---------------------------------------------------------------------
+% MAINMATTER: die eigentliche Arbeit
+% ---------------------------------------------------------------------
+\mainmatter
+
+\chapter{Einleitung}
+\label{ch:einleitung}
+
+Hier beginnt deine Einleitung. Lösch diesen Beispieltext und schreib deine eigene Motivation, Problemstellung, Zielsetzung und Methodik.
+
+Beispiel-Zitat im Text: \footcite[Vgl.][S.~42]{mustermann2024}
+
+Beispiel für einen Glossar-Begriff: \gls{beispielbegriff}.
+
+Beispiel für ein Akronym beim ersten Vorkommen: \gls{dhbw}. Beim zweiten Vorkommen wird automatisch nur die Abkürzung angezeigt: \gls{dhbw}.
+
+\chapter{Hauptteil}
+\label{ch:hauptteil}
+
+\section{Theoretische Grundlagen}
+\label{sec:grundlagen}
+
+Hier kommen deine theoretischen Grundlagen hin.
+
+\section{Methodik}
+\label{sec:methodik}
+
+Hier beschreibst du deine Methodik.
+
+\section{Ergebnisse}
+\label{sec:ergebnisse}
+
+Hier präsentierst du deine Ergebnisse.
+
+\chapter{Fazit und Ausblick}
+\label{ch:fazit}
+
+Hier ziehst du Fazit und gibst einen Ausblick.
+
+% ---------------------------------------------------------------------
+% BACKMATTER: Verzeichnisse, Anhang
+% ---------------------------------------------------------------------
+\backmatter
+
+% --- Literaturverzeichnis ---
+\printbibliography[title={Literaturverzeichnis}]
+
+% --- Anhang (optional, einkommentieren wenn nötig) ---
+% \appendix
+% \chapter{Anhang A: Titel}
+% Inhalt des Anhangs.
+
+% ============================================================================
+% ERKLÄRUNG ZUR VERWENDUNG VON KI-SYSTEMEN
+% ----------------------------------------------------------------------------
+% Konvention DHBW Unternehmertum: vor der Ehrenwörtlichen Erklärung am
+% Ende der Arbeit. Wortlaut und Tabelleneinträge an deine konkrete
+% Arbeit anpassen — die Tabellenzeilen unten sind als Anregung gemeint,
+% lösche oder ergänze, was nicht / was zusätzlich zutrifft.
+% ============================================================================
+
+\cleardoublepage
+\chapter*{Erklärung zur Verwendung von KI-Systemen}
+\addcontentsline{toc}{chapter}{Erklärung zur Verwendung von KI-Systemen}
+\thispagestyle{plain}
+
+Ich erkläre, dass ich mich aktiv über die Leistungsfähigkeit und die Beschränkungen der in dieser Arbeit eingesetzten KI-Systeme informiert habe und mir der damit verbundenen Chancen und Risiken bewusst bin.
+
+Sämtliche wissenschaftlichen Zielsetzungen sowie die Auswahl und Definition der zentralen Konzepte ([\textit{zentrale Konzepte / Begriffe einsetzen}]) %% PLACEHOLDER
+wurden von mir entwickelt. Die zum Zeitpunkt der Bearbeitung eingesetzten KI-Systeme (in der jeweils aktuellsten verfügbaren Version) unterstützten mich bei der theoretischen Herleitung, indem sie alternative Formulierungen, Strukturierungsvorschläge und mögliche Ableitungsschritte auf Basis meiner inhaltlichen Vorgaben generierten. Die in dieser Arbeit dargestellte endgültige theoretische Herleitung sowie die inhaltliche Bewertung und Einordnung der Ergebnisse wurden von mir ausgewählt, angepasst, konsolidiert und verantwortet.
+
+Die eingesetzten KI-Systeme dienten als forschungsunterstützende Werkzeuge im Sinne eines „wissenschaftlichen Assistenten“: Sie unterstützten mich bei der Literaturrecherche, der formalen Übersetzung von Konzepten in mathematische Formeln, Rechenlogiken, Programmcodes, Tabellen und Grafiken sowie bei der Exploration möglicher Modellierungs- und Mapping-Varianten.
+
+Die finale Auswahl, Anpassung, Vereinfachung und theoretische Begründung der in dieser Arbeit verwendeten Ansätze und Interpretationen erfolgten ausschließlich durch mich; ich übernehme die volle Verantwortung für die Richtigkeit, Nachvollziehbarkeit und wissenschaftliche Angemessenheit aller dargestellten Inhalte.
+
+\vspace{0.5cm}
+
+\noindent
+Bei der Erstellung der Arbeit habe ich die folgenden auf künstlicher Intelligenz (KI) basierten Systeme in der im Folgenden dargestellten Weise benutzt:
+
+\vspace{0.5cm}
+
+\begin{longtable}{@{}p{3.5cm}p{3.0cm}p{6.1cm}@{}}
+\toprule
+\textbf{Arbeitsschritt} & \textbf{KI-System(e)} & \textbf{Beschreibung der Verwendungsweise} \\
+\midrule
+\endhead
+
+Generierung von Ideen und Konzeption der Arbeit
+& [\textit{z.\,B. Perplexity, ChatGPT, Gemini}] %% PLACEHOLDER
+& [\textit{Beschreibung der konkreten Nutzung — z.\,B. Unterstützung bei der Generierung und Strukturierung erster Fragestellungen, Brainstorming, Exploration von Zusammenhängen. Die endgültige Auswahl der Forschungsfragen und Konzepte erfolgte durch mich.}] \\[0.3cm] %% PLACEHOLDER
+
+Literatursuche und -analyse
+& [\textit{z.\,B. SciSpace, Perplexity}] %% PLACEHOLDER
+& [\textit{Beschreibung — z.\,B. Identifikation relevanter Quellen sowie Erstellung von Kurz-Zusammenfassungen zur Vorbereitung der theoretischen Synthese. Die finale Auswahl, inhaltliche Prüfung und Bewertung der Literatur erfolgten durch mich.}] \\[0.3cm] %% PLACEHOLDER
+
+Auswahl von Methoden und Modellen
+& [\textit{z.\,B. Gemini, Claude}] %% PLACEHOLDER
+& [\textit{Beschreibung — z.\,B. Exploration möglicher methodischer Ansätze, Variation von Modellformulierungen. Die in dieser Arbeit verwendete Modelllogik wurde von mir ausgewählt, angepasst und auf Basis der Literatur und eigener Designentscheidungen begründet.}] \\[0.3cm] %% PLACEHOLDER
+
+Generierung von Programmcodes und mathematischen Formeln
+& [\textit{z.\,B. Claude Code}] %% PLACEHOLDER
+& [\textit{Beschreibung — z.\,B. Unterstützung bei der formalen Übersetzung meiner konzeptionellen Überlegungen in Python-Code, mathematische Formeln und Rechenlogiken. Die zugrunde liegenden Konzepte, Variablen, Skalen, Schwellenwerte und Bewertungslogiken wurden von mir definiert; die KI diente der technischen Ausarbeitung.}] \\[0.3cm] %% PLACEHOLDER
+
+Erstellung tabellarischer Darstellungen und formaler Übersichten
+& [\textit{z.\,B. Claude Code}] %% PLACEHOLDER
+& [\textit{Beschreibung — z.\,B. Überführung eigenständig entwickelter Inhalte in tabellarische Darstellungen und strukturierte Übersichten. Die inhaltliche Konzeption, Kategorienbildung und interpretativen Schlüsse stammen von mir.}] \\[0.3cm] %% PLACEHOLDER
+
+Erstellung von Visualisierungen (TikZ-Grafiken, Diagramme, Prozessabbildungen)
+& [\textit{z.\,B. Gemini Canvas, Claude Code}] %% PLACEHOLDER
+& [\textit{Beschreibung — z.\,B. Generierung von \LaTeX{}/TikZ-Abbildungen, Diagrammen und visuellen Strukturentwürfen auf Basis meiner textuellen Vorgaben. Die inhaltliche Konzeption, Auswahl und Interpretation jeder Grafik erfolgten durch mich; die KI übersetzte diese in formalen Code bzw. Grafiken.}] \\[0.3cm] %% PLACEHOLDER
+
+Strukturierung und Formulierung des Texts der Arbeit
+& [\textit{z.\,B. ChatGPT, Claude Code}] %% PLACEHOLDER
+& [\textit{Beschreibung — z.\,B. Generierung von Gliederungsvorschlägen, Umformulierungen einzelner Absätze und stilistischer Feinschliff auf Basis meines eigenen Rohtexts. Inhaltliche Argumentationslinien, Auswahl der zitierten Literatur und alle wissenschaftlichen Aussagen wurden von mir festgelegt.}] \\ %% PLACEHOLDER
+
+\bottomrule
+\end{longtable}
+
+\vspace{0.5cm}
+
+\noindent
+[Ort], den [TT.\ Monat JJJJ]                                      %% PLACEHOLDER
+
+\vspace{1.0cm}
+
+\noindent
+\rule{5cm}{0.4pt}\\
+\textit{Vorname Nachname}                                        %% PLACEHOLDER
+
+\clearpage
+
+% ============================================================================
+% EHRENWÖRTLICHE ERKLÄRUNG (letztes Blatt, ohne Seitenzahl, lt. DHBW-Vorgabe)
+% ============================================================================
+
+\chapter*{Ehrenwörtliche Erklärung}
+\addcontentsline{toc}{chapter}{Ehrenwörtliche Erklärung}
+\thispagestyle{empty}
+
+Ich versichere hiermit ehrenwörtlich, dass ich meine Bachelor-Thesis mit dem Thema
+
+\begin{center}
+\textit{„[Titel der Arbeit einsetzen]"}                          %% PLACEHOLDER
+\end{center}
+
+selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+
+Ich erkläre, dass ich
+
+\begin{itemize}
+    \item die Übernahme wörtlicher Zitate aus der Literatur sowie die Verwendung der Gedanken anderer Autoren an den entsprechenden Stellen innerhalb der Arbeit gekennzeichnet habe,
+
+    \item meine wissenschaftliche Arbeit bei keiner anderen Prüfung vorgelegt habe,
+
+    \item mich aktiv über die Leistungsfähigkeit und Beschränkungen verwendeter KI-Systeme informiert habe,
+
+    \item die aus KI-Systemen stammenden Inhalte gemäß den hier formulierten Regelungen zu Quellenangaben und -verzeichnissen gekennzeichnet habe,
+
+    \item überprüft habe, dass die aus KI-Systemen stammenden Inhalte korrekt sind und
+
+    \item mir bewusst ist, dass ich als Autor(in) dieser Arbeit die Verantwortung für darin gemachte Angaben und Aussagen trage.
+\end{itemize}
+
+Ich versichere zudem, dass die eingereichte elektronische Fassung mit der gedruckten Fassung übereinstimmt.
+
+Ich bin mir bewusst, dass eine falsche Erklärung rechtliche Folgen haben wird.
+
+\vspace{0.8cm}
+
+\noindent
+[Ort], den [TT.\ Monat JJJJ]                                      %% PLACEHOLDER
+
+\vspace{0.6cm}
+
+\noindent
+\rule{5cm}{0.4pt}\\
+\textit{Vorname Nachname}                                        %% PLACEHOLDER
+
+\end{document}
