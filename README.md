@@ -15,6 +15,7 @@ Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
 
 - [`dhbw-abendvortrag-slides.pdf`](vortrag/dhbw-abendvortrag-slides.pdf) — PDF-Fassung zum schnellen Teilen.
 - [`slides.html`](vortrag/slides.html) — interaktive HTML-Fassung inklusive benötigter Assets.
+- [`anleitungen/`](vortrag/anleitungen/) — drei Markdown-Sheets für das Setup von SecondBrain bis LaTeX-Template.
 
 ## Voraussetzungen
 
