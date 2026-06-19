@@ -8,4 +8,6 @@ Empfohlene Reihenfolge:
 2. [`02-prompts.md`](02-prompts.md) - Copy-Paste-Prompts für Vault-Struktur, Templates, Git-Versionierung und optionales LaTeX-Schreibprojekt.
 3. [`03-system-erklaerung.md`](03-system-erklaerung.md) - Referenzmaterial: SecondBrain-Logik, Wikilinks, Git und LaTeX-Pakete.
 
+Für die LaTeX-Vorlage selbst gibt es zusätzlich den Kurzweg aus [`../../KI-SETUP.md`](../../KI-SETUP.md): Nach dem Klonen reicht in Claude Code, OpenAI Codex oder einem lokalen GPT-/Claude-Agenten der Satz `Ja, bitte einrichten.`
+
 PDFs sind bewusst nicht mitversioniert. Wer eine PDF-Fassung braucht, kann sie aus den Markdown-Dateien generieren lassen.

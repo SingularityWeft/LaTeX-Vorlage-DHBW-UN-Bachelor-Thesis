@@ -7,7 +7,32 @@ Eine kompilierbare LaTeX-Vorlage für Bachelor-Thesen an der DHBW, abgestimmt au
 - **Glossar und Abkürzungsverzeichnis** mit `glossaries`.
 - **Deckblatt** und **Selbstständigkeitserklärung** als Platzhalter.
 - **Drei Beispielkapitel** (Einleitung, Hauptteil, Fazit), die direkt kompilieren.
-- **KI-Build-Integration:** `.claude/skills/latex-build/SKILL.md` (für Claude Code) und `AGENTS.md` (für OpenAI Codex), damit du im Alltag nur „Kompiliere die Thesis" sagen musst — die KI macht den Rest.
+- **KI-Setup- und Build-Integration:** `KI-SETUP.md`, `CLAUDE.md`, `.claude/skills/latex-build/SKILL.md` und `AGENTS.md`, damit du nach dem Klonen nur „Ja, bitte einrichten" und später „Kompiliere die Thesis" sagen musst.
+
+## KI-Schnellstart
+
+Das funktioniert mit Claude Code, OpenAI Codex oder einem GPT-/Claude-Agenten mit lokalem Datei- und Terminalzugriff. Ein reiner Browser-Chat ohne Dateizugriff kann die Schritte nur erklären, nicht selbst ausführen.
+
+Wenn du die Vorlage von einer KI klonen und einrichten lassen willst, gib ihr zuerst diesen Prompt:
+
+```text
+Klone dieses Repo in einen neuen Ordner `meine-thesis`:
+https://github.com/SingularityWeft/LaTeX-Vorlage-DHBW-UN-Bachelor-Thesis
+
+Wechsle danach in den Ordner und lies `README.md`, `KI-SETUP.md` und die passende Agenten-Datei:
+- `AGENTS.md` für Codex/GPT-basierte Coding-Agenten
+- `CLAUDE.md` für Claude Code
+
+Warte danach auf mein Startsignal.
+```
+
+Wenn die KI im Ordner steht, reicht:
+
+```text
+Ja, bitte einrichten.
+```
+
+Die KI richtet dann das LaTeX-Projekt arbeitsfertig ein: sie schützt das öffentliche Vorlagen-Remote vor versehentlichen Pushes, legt eine `ki-erklaerung.md` an, prüft die LaTeX-Toolchain, baut eine erste `main.pdf` und listet die offenen Platzhalter für Deckblatt und Metadaten.
 
 ## Vortragsmaterial
 
@@ -48,7 +73,7 @@ Im Thesis-Ordner Claude Code oder Codex starten und sagen:
 Kompiliere die Thesis.
 ```
 
-Die KI liest entweder die `.claude/skills/latex-build/SKILL.md` (Claude Code) oder die `AGENTS.md` (Codex) und führt die richtige Kompilier-Sequenz aus, prüft die Logs und meldet Fehler.
+Die KI liest entweder `CLAUDE.md` plus `.claude/skills/latex-build/SKILL.md` (Claude Code) oder `AGENTS.md` (Codex/GPT-Agenten) und führt die richtige Kompilier-Sequenz aus, prüft die Logs und meldet Fehler.
 
 ### Variante 2: Per Hand im Terminal
 
@@ -92,6 +117,9 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ```
 .
 ├── README.md                              # diese Datei
+├── KI-SETUP.md                            # Ablauf für "Ja, bitte einrichten"
+├── CLAUDE.md                              # Projektanweisungen für Claude Code
+├── AGENTS.md                              # Projektanweisungen für OpenAI Codex / GPT-Agenten
 ├── main.tex                               # Hauptdokument (Präambel + Kapitel)
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
@@ -99,7 +127,8 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 │   └── skills/
 │       └── latex-build/
 │           └── SKILL.md                   # Claude-Code-Skill für den Build
-└── AGENTS.md                              # Konventionen für OpenAI Codex
+└── vortrag/
+    └── anleitungen/                       # Setup-Sheets aus dem DHBW-Abendvortrag
 ```
 
 ## KI-Erklärung (akademisch)
@@ -121,7 +150,7 @@ im Verlauf der Arbeit.
 - **Quelle (bei Import aus anderen KIs):** ...
 ```
 
-Sowohl der Claude-Code-Skill als auch die `AGENTS.md` enthalten Regeln, die die KI dazu bringen, am Sessionende ungefragt einen Eintrag anzuhängen — du musst sie nur einmal anlegen.
+`CLAUDE.md`, der Claude-Code-Skill und `AGENTS.md` enthalten Regeln, die die KI dazu bringen, am Sessionende ungefragt einen Eintrag anzuhängen — du musst sie nur einmal anlegen.
 
 ## Lizenz
 

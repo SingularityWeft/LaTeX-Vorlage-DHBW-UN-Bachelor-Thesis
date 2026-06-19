@@ -2,6 +2,16 @@
 
 Dies ist ein LaTeX-Schreibprojekt im DHBW-Layout (Studiengang Unternehmertum). Halte dich an die folgenden Regeln, wenn du in diesem Verzeichnis arbeitest.
 
+## Setup-Trigger
+
+Wenn der User „Ja, bitte einrichten", „richte die Vorlage ein", „mach das arbeitsfertig" oder ähnlich sagt:
+
+1. Lies `KI-SETUP.md`.
+2. Führe den dort beschriebenen Ablauf aus.
+3. Bei einer persönlichen Einrichtung: push nie in das öffentliche Vorlagen-Repo `SingularityWeft/LaTeX-Vorlage-DHBW-UN-Bachelor-Thesis`.
+
+Wenn der User das vollständige SecondBrain-System aus dem Vortrag einrichten will, lies zusätzlich `vortrag/anleitungen/README.md` und arbeite die dort verlinkten Sheets in Reihenfolge ab.
+
 ## Kompilieren
 
 Wenn der User „kompiliere", „build", „render" oder „PDF erstellen" sagt, führe genau diese Sequenz aus:
@@ -31,8 +41,9 @@ Bei fehlendem `pdflatex` oder `biber`: User auf MacTeX-Installation hinweisen (<
 
 Versioniere am Sessionende automatisch:
 1. `git status` prüfen.
-2. Bei uncommitted Änderungen: `git add -A` + `git commit -m "<aussagekräftige Nachricht>"` mit `Co-Authored-By:`-Trailer.
-3. Falls Remote konfiguriert: `git push`. Bei Auth-Fehler: stoppen und User informieren.
+2. Wenn du gerade eine persönliche Arbeitskopie aus dieser Vorlage einrichtest und `origin` auf `https://github.com/SingularityWeft/LaTeX-Vorlage-DHBW-UN-Bachelor-Thesis.git` zeigt: nicht pushen. Bei Einrichtung gemäß `KI-SETUP.md` in `vorlage` umbenennen.
+3. Bei uncommitted Änderungen: `git add -A` + `git commit -m "<aussagekräftige Nachricht>"` mit `Co-Authored-By:`-Trailer.
+4. Falls ein eigenes Remote konfiguriert ist: `git push`. Bei Auth-Fehler: stoppen und User informieren.
 
 Keine destruktiven Git-Befehle (`reset --hard`, `push --force`, `branch -D`, `clean -f`) ohne explizite Zustimmung.
 

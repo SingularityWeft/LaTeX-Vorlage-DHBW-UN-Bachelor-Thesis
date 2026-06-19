@@ -301,9 +301,9 @@ Künftig vor Sessionstart `git pull` (oder die KI bitten: „Pull den Vault, bev
 
 ---
 
-## Prompt 5 — LaTeX-Thesis-Vorlage klonen
+## Prompt 5 — LaTeX-Thesis-Vorlage klonen und einrichten
 
-Was passiert: Du klonst die fertige DHBW-Bachelor-Thesis-Vorlage aus einem öffentlichen Repo, statt sie von der KI neu generieren zu lassen. Vorteile: sie ist getestet, kompiliert sofort, enthält bereits das `latex-build`-Skill (für Claude Code) und eine `AGENTS.md` (für Codex), Deckblatt-Platzhalter, Ehrenwörtliche Erklärung und Vorlage für die KI-Erklärung. Erst hier, nicht im Vault — LaTeX und Notizen trennen.
+Was passiert: Du klonst die fertige DHBW-Bachelor-Thesis-Vorlage aus einem öffentlichen Repo, statt sie von der KI neu generieren zu lassen. Vorteile: sie ist getestet, kompiliert sofort, enthält bereits `KI-SETUP.md`, `CLAUDE.md`, das `latex-build`-Skill (für Claude Code) und eine `AGENTS.md` (für Codex/GPT-Agenten), Deckblatt-Platzhalter, Ehrenwörtliche Erklärung und Vorlage für die KI-Erklärung. Erst hier, nicht im Vault — LaTeX und Notizen trennen.
 
 **Vorbereitung als Mensch:**
 
@@ -316,19 +316,15 @@ Was passiert: Du klonst die fertige DHBW-Bachelor-Thesis-Vorlage aus einem öffe
    ```
 3. Starte die KI **in diesem neuen Ordner** (nicht mehr im Vault).
 
-Dann diesen Prompt:
+Dann reicht dieser Prompt:
 
 ```
-Lies README.md und schau dir die Struktur dieses Projektes an. Erkläre mir kurz:
-
-1. Welche Dateien gibt es und was machen sie?
-2. Welche Stellen in main.tex sind als %% PLACEHOLDER markiert und müssen ich anpassen, bevor ich abgebe?
-3. Wie löse ich künftig einen Build aus — gibt es einen Skill bzw. eine AGENTS.md, die du nutzen kannst?
-
-Initialisiere danach ein frisches Git-Repo in diesem Ordner (lösche dafür den geerbten .git-Ordner und mach ein neues `git init` + erstes Commit „init: thesis aus vorlage übernommen") — damit das hier ab jetzt MEIN Repo ist, nicht ein Klon-Repo der Vorlage.
+Ja, bitte einrichten.
 ```
 
-**Wichtig:** Das Repo auf GitHub wird beim Klonen mitgezogen — ohne das `git init`-Reset bist du an die Vorlage gebunden. Der Prompt oben sagt der KI, das `.git`-Verzeichnis zu erneuern, damit du dein eigenes Repo bekommst (und ggf. in Prompt 4 analog dein eigenes GitHub/GitLab-Remote anbinden kannst).
+Die KI liest `KI-SETUP.md` und richtet das Projekt arbeitsfertig ein: sie schützt das öffentliche Vorlagen-Remote vor versehentlichen Pushes, legt `ki-erklaerung.md` an, prüft `pdflatex`/`biber`/`makeglossaries`, baut eine erste `main.pdf` und listet die offenen `%% PLACEHOLDER` in `main.tex`.
+
+**Wichtig:** Das Repo auf GitHub wird beim Klonen mitgezogen. `KI-SETUP.md` sagt der KI deshalb, das öffentliche Remote nicht zu nutzen und es in `vorlage` umzubenennen. Wenn du später ein eigenes privates GitHub-/GitLab-Repo willst, kannst du analog zu Prompt 4 ein neues `origin` hinzufügen. Einen kompletten History-Reset (`.git` löschen + `git init`) sollte die KI nur machen, wenn du das ausdrücklich zusätzlich freigibst.
 
 ---
 
