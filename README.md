@@ -9,6 +9,13 @@ Eine kompilierbare LaTeX-Vorlage für Bachelor-Thesen an der DHBW, abgestimmt au
 - **Drei Beispielkapitel** (Einleitung, Hauptteil, Fazit), die direkt kompilieren.
 - **KI-Build-Integration:** `.claude/skills/latex-build/SKILL.md` (für Claude Code) und `AGENTS.md` (für OpenAI Codex), damit du im Alltag nur „Kompiliere die Thesis" sagen musst — die KI macht den Rest.
 
+## Vortragsmaterial
+
+Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
+
+- [`dhbw-abendvortrag-slides.pdf`](vortrag/dhbw-abendvortrag-slides.pdf) — PDF-Fassung zum schnellen Teilen.
+- [`slides.html`](vortrag/slides.html) — interaktive HTML-Fassung inklusive benötigter Assets.
+
 ## Voraussetzungen
 
 - **MacTeX** (auf macOS): <https://www.tug.org/mactex/> — Achtung, ~5 GB Download.
