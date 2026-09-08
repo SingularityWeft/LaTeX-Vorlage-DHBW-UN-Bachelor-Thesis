@@ -34,6 +34,9 @@
 *~
 .*.swp
 
+# Lokaler Python-Bytecode der Repository-Prüfer
+scripts/__pycache__/
+
 # KI-Tool Worktrees (Claude Code agenten-features)
 # .claude/skills/ ist explizit getrackt — siehe weiter unten
 .claude/worktrees/

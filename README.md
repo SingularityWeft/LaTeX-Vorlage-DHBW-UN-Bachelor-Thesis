@@ -68,6 +68,24 @@ Für echte Daten wählst du anschließend unter [`execution-tracks/`](execution-
 
 Erst wenn Methode, Datenweg und Gates bestätigt sind, beschreibt [`AGENTIC-RESEARCH.md`](AGENTIC-RESEARCH.md) den optionalen begrenzten Experimentierpfad. Ohne freigegebenes Research Program und Eval Cases bleibt `Assist` aktiv; es startet kein Lauf.
 
+## Repository lokal verifizieren
+
+Der lokale Verify-Befehl prüft denselben Vertrag, den GitHub Actions ausführt: relative Markdown-Links, erforderliche Research-Dateien und Router-Struktur, synthetische Daten- und Eval-Grenzen, gesperrte SHA-256-Hashes, Beispiel-Run-Records, Merge-Marker, lokale Pfade, Git-Sicherheitsregeln, typische Secret-Muster, die Offline-Tests sowie die nichtleere `main.pdf`.
+
+```bash
+bash scripts/verify-repo.sh
+```
+
+Sind `pdflatex`, `biber` und `makeglossaries` vollständig verfügbar, führt der Befehl zusätzlich den gesamten LaTeX-Build aus. Fehlt mindestens eines dieser Werkzeuge, meldet der normale lokale Lauf einen sichtbaren Skip. Für Release- und CI-Prüfungen ist LaTeX verpflichtend:
+
+```bash
+bash scripts/verify-repo.sh --require-latex
+```
+
+Der Musterscan ist nur ein Frühwarncheck und keine Garantie, alle Secrets, personenbezogenen Daten oder lokalen Artefakte zu erkennen. Deshalb bleibt vor Veröffentlichung ein menschliches Review erforderlich. Die dokumentierte Allowlist enthält ausschließlich drei Arten erklärter Treffer: den synthetischen Benutzerpfad-Platzhalter in `vortrag/anleitungen/03-system-erklaerung.md`, exakt benannte Verbotsformulierungen in den Setup-/Agentenanweisungen sowie die pfad- und anzahlgebundene Umgebungsvariablen-/Synthetik-Evidenz der bestehenden Live-Vertragstests. Neue Treffer stoppen die Prüfung bis zur manuellen Einordnung; echte Zugangsdaten werden niemals allowlistet.
+
+Der Workflow [`.github/workflows/verify.yml`](.github/workflows/verify.yml) nutzt keine LLMs, Modellhosts oder Benutzer-Credentials. Er installiert die offizielle Ubuntu-TeX-Toolchain und ruft ausschließlich den obigen Verify-Vertrag mit `--require-latex` auf.
+
 ## Vortragsmaterial
 
 Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
@@ -162,6 +180,7 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ├── main.tex                               # Hauptdokument (Präambel + Kapitel)
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
+├── scripts/                               # lokaler, auch in CI verwendeter Verify-Vertrag
 ├── profiles/                              # Einstiege für Thesis, Unternehmen und Informatik
 ├── templates/research/                    # Research-Templates inklusive Projektmanifest
 ├── execution-tracks/                      # Cloud-, Hybrid- und Local/On-Prem-Verträge

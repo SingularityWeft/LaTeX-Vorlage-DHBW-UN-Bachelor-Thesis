@@ -1,0 +1,33 @@
+name: Verify repository
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      # actions/checkout v7.0.1, am 2026-09-08 gegen das offizielle Release geprüft.
+      - name: Repository auschecken
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Offizielle Ubuntu-TeX-Pakete installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y \
+            biber \
+            texlive-fonts-recommended \
+            texlive-lang-german \
+            texlive-latex-extra \
+            texlive-pictures
+
+      - name: Gemeinsamen Verify-Vertrag ausführen
+        run: bash scripts/verify-repo.sh --require-latex
