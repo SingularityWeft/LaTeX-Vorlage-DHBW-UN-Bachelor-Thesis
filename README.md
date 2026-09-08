@@ -11,7 +11,9 @@ Eine kompilierbare LaTeX-Vorlage für Bachelor-Thesen an der DHBW, abgestimmt au
 
 ## KI-Schnellstart
 
-Das funktioniert mit Claude Code, OpenAI Codex oder einem GPT-/Claude-Agenten mit lokalem Datei- und Terminalzugriff. Ein reiner Browser-Chat ohne Dateizugriff kann die Schritte nur erklären, nicht selbst ausführen.
+Der Ablauf ist für Claude Code, OpenAI Codex und vergleichbare Coding-Agenten mit lokalem Datei- und Terminalzugriff ausgelegt. Die tatsächlich geprüften Versionen, Profilkombinationen und offenen Grenzen stehen in [`TESTED-SETUPS.md`](TESTED-SETUPS.md); daraus folgt keine allgemeine oder künftige Client-Kompatibilität. Ein reiner Browser-Chat ohne Dateizugriff kann die Schritte nur erklären, nicht selbst ausführen.
+
+Ein frischer Clone isoliert nicht automatisch die globale Konfiguration deines Coding-Agents. Prüfe vor vertraulichen oder rein synthetischen Setups, ob globale Instruktionen, zusätzliche Arbeitsverzeichnisse oder Plugins auf andere Dateien zugreifen dürfen. Nutze dafür ein isoliertes Client-Profil beziehungsweise eine wirksame Read-Sandbox; verlangt eine übergeordnete Instruktion externen Kontext, pausiere vor dem Lesen und kläre den Zugriff menschlich.
 
 Wenn du die Vorlage von einer KI klonen und einrichten lassen willst, gib ihr zuerst diesen Prompt:
 
@@ -86,6 +88,8 @@ Der Musterscan ist nur ein Frühwarncheck und keine Garantie, alle Secrets, pers
 
 Der Workflow [`.github/workflows/verify.yml`](.github/workflows/verify.yml) nutzt keine LLMs, Modellhosts oder Benutzer-Credentials. Er installiert die offizielle Ubuntu-TeX-Toolchain und ruft ausschließlich den obigen Verify-Vertrag mit `--require-latex` auf.
 
+Der aktuelle Abnahmestand einschließlich Clean-Clone-Matrix, Baseline-Vergleich, visueller PDF-Prüfung und noch offener Human Gates ist in [`TESTED-SETUPS.md`](TESTED-SETUPS.md) dokumentiert. Ein lokaler grüner Verify-Lauf ersetzt weder die drei unabhängigen Anfänger-Walkthroughs noch Owner-Freigabe und gehosteten CI-Lauf.
+
 ## Vortragsmaterial
 
 Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
@@ -117,7 +121,7 @@ cd meine-thesis
 
 Dann eines von beidem:
 
-### Variante 1: Per KI (empfohlen, wenn Claude Code oder OpenAI Codex installiert)
+### Variante 1: Per KI mit geprüftem Projektzugriff
 
 Im Thesis-Ordner Claude Code oder Codex starten und sagen:
 

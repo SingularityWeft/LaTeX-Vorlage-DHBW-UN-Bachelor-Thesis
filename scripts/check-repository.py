@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prüft den strukturellen, datenbezogenen und CI-Vertrag von SPEC-06."""
+"""Prüft den strukturellen, datenbezogenen und CI-/Release-Vertrag."""
 
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ EXAMPLE = ROOT / "examples" / "onboarding-assistant"
 
 REQUIRED_PATHS = [
     "README.md",
+    "TESTED-SETUPS.md",
     "RESEARCH-START.md",
     "DSR-START.md",
     "KI-SETUP.md",
