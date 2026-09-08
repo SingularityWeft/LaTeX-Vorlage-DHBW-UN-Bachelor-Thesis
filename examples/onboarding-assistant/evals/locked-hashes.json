@@ -1,0 +1,15 @@
+{
+  "manifest_version": "onboarding-eval-lock-v1",
+  "hash_algorithm": "sha256",
+  "locked_before_artifact_version": "onboarding-assistant-v1",
+  "synthetic": true,
+  "files": {
+    "data/documents.json": "f0e4960c3b57572ed21b29b89ace3d4fafffcbac09f6137c57ccdd1c1f64df35",
+    "evals/exploration/cases.json": "36b63fc26f2e15108bf17bdedff16259c141c0adc699530b30f2d74cf3c6bad2",
+    "evals/confirmation/cases.json": "6b494891758531784e874d4f3707e89c2042603041189c80fd1e8067ed3b4bc8"
+  },
+  "executor": "may read exploration; must not read or write confirmation during a series",
+  "evaluator": "may read confirmation once according to the approved plan; writes results only to run records",
+  "visibility_limit": "The public teaching repository necessarily exposes the holdout to repository readers. Role and write separation are therefore process controls, not secrecy or technical sandboxing.",
+  "change_rule": "Any change requires new file versions, new hashes and a new series ID."
+}

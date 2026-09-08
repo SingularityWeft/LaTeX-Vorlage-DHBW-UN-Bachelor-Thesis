@@ -1,0 +1,1 @@
+"""Synthetisches Onboarding-Assistent-Beispiel."""

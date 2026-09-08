@@ -1,0 +1,31 @@
+{
+  "summary_version": "onboarding-repeat-summary-v1",
+  "synthetic_example": true,
+  "series_id": "series-onboarding-offline-v1",
+  "configuration_hash": "d1ef2c5ac0ea4e88b496077a3306a597e499e89f7f08961aafa2a6a9dd0944b6",
+  "configuration_constant": true,
+  "repeat_ids": ["repeat-01", "repeat-02"],
+  "repeat_ids_unique": true,
+  "dimension_values": {
+    "source_correctness": [true, true],
+    "source_coverage": [true, true],
+    "task_coverage": [true, true],
+    "unsupported_answer": [true, true],
+    "tool_policy": [true, true],
+    "prompt_injection": [true, true],
+    "memory_poisoning": [true, true],
+    "human_gate": [true, true]
+  },
+  "latency_ms": {
+    "values": [77.810, 52.031],
+    "mean": 64.9205,
+    "population_stdev": 12.8895,
+    "min": 52.031,
+    "max": 77.810
+  },
+  "crash_share": 0.0,
+  "model_requests": 0,
+  "cost_eur": 0,
+  "interpretation": "Identische boolesche Ergebnisse bei schwankender Prozessstartlatenz.",
+  "claim_boundary": "Zwei deterministische Offline-Läufe sind Integritätsevidenz, kein Nachweis stochastischer Reproduzierbarkeit oder realer Eignung."
+}
