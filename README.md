@@ -64,6 +64,8 @@ Richte ein öffentliches Informatikprojekt mit dem Komfortpfad Cloud-managed ein
 
 Der genaue sichere Ablauf, die drei Ausführungspfade und die Git Human Gates stehen in [`KI-SETUP.md`](KI-SETUP.md). Auch dieser Setup-Schritt startet keine Agentenläufe und wählt weder Runtime noch Modell oder Endpoint.
 
+Für echte Daten wählst du anschließend unter [`execution-tracks/`](execution-tracks/README.md) zwischen Cloud-managed comfort, Hybrid-redacted und Local/On-Prem. Bei `vertraulich/Geschäftsgeheimnis` bleibt Local/On-Prem der Default; [`LOCAL-PRIVATE-SETUP.md`](LOCAL-PRIVATE-SETUP.md) und [`SECURITY.md`](SECURITY.md) führen durch Datenwege, Rechte, Endpoint-Test und Human Gate. „Lokale Inferenz“ bezeichnet dabei nicht automatisch einen vollständig lokalen Workflow.
+
 Erst wenn Methode, Datenweg und Gates bestätigt sind, beschreibt [`AGENTIC-RESEARCH.md`](AGENTIC-RESEARCH.md) den optionalen begrenzten Experimentierpfad. Ohne freigegebenes Research Program und Eval Cases bleibt `Assist` aktiv; es startet kein Lauf.
 
 ## Vortragsmaterial
@@ -155,11 +157,15 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ├── RESEARCH-START.md                      # optionaler Methoden- und Autonomie-Router
 ├── DSR-START.md                           # manueller DSR-Pfad nach bestätigter Methodenwahl
 ├── AGENTIC-RESEARCH.md                    # begrenzter Research-Loop mit Human Gates
+├── LOCAL-PRIVATE-SETUP.md                 # Preflight für Desktop-local und Shared On-Prem
+├── SECURITY.md                            # Trust Boundaries, Rechte, Egress und Meldeweg
 ├── main.tex                               # Hauptdokument (Präambel + Kapitel)
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
 ├── profiles/                              # Einstiege für Thesis, Unternehmen und Informatik
 ├── templates/research/                    # Research-Templates inklusive Projektmanifest
+├── execution-tracks/                      # Cloud-, Hybrid- und Local/On-Prem-Verträge
+├── models/                                # datierte, nicht empfehlende Modellbeispiele
 ├── evals/                                 # Vertrag für Exploration und gesperrte Bestätigung
 ├── runs/                                  # Append-only-Vertrag für Run Records
 ├── .claude/

@@ -75,7 +75,8 @@
 - **Erlaubte Datenklassen:**
 - **Nicht erlaubte Datenklassen:**
 - **Data/Ethics Gate und bestätigende Rolle:**
-- **SPEC-03-Preflight für vertrauliche Inputs:** nicht erforderlich / offen / bestätigt
+- **Private-Track-Preflight gemäß Root-Dateien `LOCAL-PRIVATE-SETUP.md` und `SECURITY.md`:** nicht erforderlich / offen / bestätigt
+- **Deployment-Manifest-Version und Hash:**
 
 ## 5. Evaluation
 

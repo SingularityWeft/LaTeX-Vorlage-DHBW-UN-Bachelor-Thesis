@@ -1,7 +1,7 @@
 # Research Project Manifest
 
-- **Template-Version:** `research-project-v2`
-- **Setup-Version:** `research-setup-v1`
+- **Template-Version:** `research-project-v3`
+- **Setup-Version:** `research-setup-v2`
 
 > Dieses Manifest dokumentiert die sichere Einrichtung. Bis zum bestätigten Data/Ethics Gate nur abstrakte oder synthetische Angaben eintragen; keine Namen, Unternehmensgeheimnisse, personenbezogenen Daten, Zugangsdaten oder vertraulichen Dokumentinhalte.
 
@@ -38,6 +38,7 @@ Wenn Methode oder Datenweg nicht eindeutig sind, bleiben sie offen. Das Setup tr
 | Research Program | nicht freigegeben | – | – | Vor `Bounded autonomous` den Vertrag aus `AGENTIC-RESEARCH.md` erfüllen |
 | Daten und Ethik | offen | – | – | Vor echten Daten `data-ethics-check.md` abschließen |
 | Ausführungspfad | sicherer Default | – | – | Datenweg vor externer Verarbeitung bestätigen |
+| Deployment/Security | nicht freigegeben | – | – | Vor echten Daten `deployment-manifest.md` und passenden Track prüfen |
 | Git-Staging | offen | – | – | Exakte Allowlist anzeigen |
 | Git-Commit | offen | – | – | Gestagten Diff separat freigeben |
 
@@ -47,7 +48,7 @@ Für jede Setup-Zieldatei Status, Quellversion und SHA-256-Hash dokumentieren. E
 
 | Zielpfad | Quelle | Template-Version | SHA-256 | Status | Hinweis |
 |---|---|---|---|---|---|
-| `research/PROJECT.md` | `templates/research/project-manifest.md` | `research-project-v2` | [Hash] | [Status] | [Hinweis] |
+| `research/PROJECT.md` | `templates/research/project-manifest.md` | `research-project-v3` | [Hash] | [Status] | [Hinweis] |
 | `research/method-choice.md` | `templates/research/method-choice.md` | `research-template-v2` | [Hash] | [Status] | [Hinweis] |
 | `research/data-ethics-check.md` | `templates/research/data-ethics-check.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
 | `research/project-brief.md` | `templates/research/project-brief.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
@@ -57,6 +58,7 @@ Für jede Setup-Zieldatei Status, Quellversion und SHA-256-Hash dokumentieren. E
 | `research/evaluation-plan.md` | `templates/research/evaluation-plan.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
 | `research/decision-log.md` | `templates/research/decision-log.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
 | `research/ai-provenance-log.md` | `templates/research/ai-provenance-log.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
+| `research/deployment-manifest.md` | `templates/research/deployment-manifest.md` | `deployment-manifest-v1` | [Hash] | [Status] | [Hinweis] |
 
 ## 5. Konfliktprotokoll
 

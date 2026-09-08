@@ -40,3 +40,12 @@
 
 # Persönliche KI-Erklärung (falls vorhanden, optional separat versionieren)
 # ki-erklaerung.md
+
+# Lokale/private Research-Konfigurationen und echte geschützte Inhalte
+.env
+.env.*
+!.env.example
+research/private/
+artifact/private/
+runs/private/
+models/cache/

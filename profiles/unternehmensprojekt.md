@@ -6,6 +6,8 @@ Dieser Pfad eignet sich für einen Forschungs- oder Pilotauftrag im Unternehmen.
 
 Fülle vor jedem Datenimport den [`Data/Ethics Check`](../templates/research/data-ethics-check.md) aus. Bis Schutzbedarf, zulässiger Datenweg und Owner bestätigt sind, verwendest du nur abstrakte oder synthetische Beschreibungen.
 
+Bei `vertraulich/Geschäftsgeheimnis` ist [`Local/On-Prem`](../execution-tracks/local-on-prem.md) der nicht still überschreibbare Default. Der vollständige Workflow gilt erst nach Deployment-Manifest und Human Gate als freigegeben; lokale Inferenz allein reicht nicht.
+
 ## Erwartete Ergebnisse
 
 - bestätigte Methodenwahl oder bewusstes Pilot-/Engineering-Design;
@@ -44,12 +46,13 @@ Ein Pilot ist nicht automatisch Forschung. Dokumentiere, ob das Ziel eine lokale
 
 1. [`method-choice.md`](../templates/research/method-choice.md)
 2. [`data-ethics-check.md`](../templates/research/data-ethics-check.md)
-3. [`project-brief.md`](../templates/research/project-brief.md)
-4. [`research-question.md`](../templates/research/research-question.md), falls ein Forschungs- oder Erkenntnisziel besteht
-5. [`evidence-log.md`](../templates/research/evidence-log.md)
-6. [`artifact-spec.md`](../templates/research/artifact-spec.md)
-7. [`evaluation-plan.md`](../templates/research/evaluation-plan.md)
-8. [`decision-log.md`](../templates/research/decision-log.md) und [`ai-provenance-log.md`](../templates/research/ai-provenance-log.md)
+3. [`deployment-manifest.md`](../templates/research/deployment-manifest.md)
+4. [`project-brief.md`](../templates/research/project-brief.md)
+5. [`research-question.md`](../templates/research/research-question.md), falls ein Forschungs- oder Erkenntnisziel besteht
+6. [`evidence-log.md`](../templates/research/evidence-log.md)
+7. [`artifact-spec.md`](../templates/research/artifact-spec.md)
+8. [`evaluation-plan.md`](../templates/research/evaluation-plan.md)
+9. [`decision-log.md`](../templates/research/decision-log.md) und [`ai-provenance-log.md`](../templates/research/ai-provenance-log.md)
 
 ## Human Gates
 

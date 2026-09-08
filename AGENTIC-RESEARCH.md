@@ -153,7 +153,7 @@ Ohne Kalibrierung bleibt das Ergebnis `inconclusive` oder geht in `human-review`
 
 Jeder Versuch und jeder Repeat wird dokumentiert – auch Crashs, Discards und unklare Ergebnisse. Ein [`Run Record`](templates/research/run-record.md) enthält Commit, Konfiguration, abstrakte Inputs, Modell/Runtime, Prompt/Harness, Daten-/Eval-Version, Seed/Repeat-ID, Ergebnis, Rohoutput-/Trace-Referenz, Artefakte, Ressourcen, Latenz, Kosten und Fehlerstatus.
 
-Records minimieren Rohdaten, enthalten keine Secrets und verweisen bei geschützten Quellen nur auf freigegebene Speicherorte oder IDs. Zugriff und Aufbewahrung werden angegeben. Vertrauliche Inputs dürfen ausschließlich einen nach SPEC-03 freigegebenen Track verwenden und nie in das öffentliche Git gelangen.
+Records minimieren Rohdaten, enthalten keine Secrets und verweisen bei geschützten Quellen nur auf freigegebene Speicherorte oder IDs. Zugriff und Aufbewahrung werden angegeben. Vertrauliche Inputs dürfen ausschließlich einen nach [`LOCAL-PRIVATE-SETUP.md`](LOCAL-PRIVATE-SETUP.md) und [`SECURITY.md`](SECURITY.md) freigegebenen Track verwenden und nie in das öffentliche Git gelangen.
 
 ## Sofortige Stopbedingungen
 

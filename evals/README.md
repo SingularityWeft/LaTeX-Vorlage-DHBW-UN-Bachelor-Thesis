@@ -38,6 +38,6 @@ Bei einem LLM-Grader sind Modell/Version, Prompt/Rubrik, Kalibrierungsfälle mit
 ## Schutz und Änderungskontrolle
 
 - Keine Secrets oder vertraulichen Rohdaten in öffentlichen Eval-Dateien.
-- Vertrauliche Inputs nur mit freigegebenem SPEC-03-Track.
+- Vertrauliche Inputs nur mit einem nach [`../LOCAL-PRIVATE-SETUP.md`](../LOCAL-PRIVATE-SETUP.md) und [`../SECURITY.md`](../SECURITY.md) freigegebenen Track.
 - Zugriff und Dateirechte vor jedem Lauf prüfen und im Research Program dokumentieren.
 - Korrekturen erfolgen als neue Version; bestehende freigegebene Definitionen bleiben referenzierbar.

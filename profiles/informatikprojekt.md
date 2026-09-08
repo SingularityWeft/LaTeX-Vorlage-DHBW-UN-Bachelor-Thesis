@@ -6,6 +6,8 @@ Dieser Pfad eignet sich für Artefaktentwicklung und empirische Studien in Infor
 
 Fülle vor Daten, Repository-Inhalten oder Nutzerbeobachtungen den [`Data/Ethics Check`](../templates/research/data-ethics-check.md) aus. Nutze bis zur Freigabe nur abstrakte oder synthetische Beispiele.
 
+Dokumentiere anschließend alle Runtime-, Modell-, Endpoint-, Tool- und Netzwerkgrenzen im [`Deployment-Manifest`](../templates/research/deployment-manifest.md). Für vertrauliche Inputs beginnt der Pfad mit [`Local/On-Prem`](../execution-tracks/local-on-prem.md).
+
 ## Erwartete Ergebnisse
 
 - bestätigte Methodenwahl;
@@ -44,12 +46,13 @@ Design- und empirischer Zyklus können sich ergänzen: Die Artefaktentwicklung b
 
 1. [`method-choice.md`](../templates/research/method-choice.md)
 2. [`data-ethics-check.md`](../templates/research/data-ethics-check.md)
-3. [`project-brief.md`](../templates/research/project-brief.md)
-4. [`research-question.md`](../templates/research/research-question.md)
-5. [`evidence-log.md`](../templates/research/evidence-log.md)
-6. [`artifact-spec.md`](../templates/research/artifact-spec.md), sofern ein Artefakt entsteht
-7. [`evaluation-plan.md`](../templates/research/evaluation-plan.md)
-8. [`decision-log.md`](../templates/research/decision-log.md) und [`ai-provenance-log.md`](../templates/research/ai-provenance-log.md)
+3. [`deployment-manifest.md`](../templates/research/deployment-manifest.md)
+4. [`project-brief.md`](../templates/research/project-brief.md)
+5. [`research-question.md`](../templates/research/research-question.md)
+6. [`evidence-log.md`](../templates/research/evidence-log.md)
+7. [`artifact-spec.md`](../templates/research/artifact-spec.md), sofern ein Artefakt entsteht
+8. [`evaluation-plan.md`](../templates/research/evaluation-plan.md)
+9. [`decision-log.md`](../templates/research/decision-log.md) und [`ai-provenance-log.md`](../templates/research/ai-provenance-log.md)
 
 ## Human Gates
 

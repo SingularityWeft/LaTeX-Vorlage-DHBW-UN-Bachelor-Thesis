@@ -41,7 +41,7 @@ Jeder Run Record nennt mindestens:
 - Keine vertraulichen Rohdaten in öffentlichem Git; nur geschützte IDs oder Speicherreferenzen verwenden.
 - Agenten-Trajektorien und Toolereignisse auf das für Reproduktion oder Sicherheitsprüfung erforderliche Maß begrenzen.
 - Zugriffsklasse, zugriffsberechtigte Rollen und Retention dokumentieren.
-- Vertrauliche Runs benötigen einen freigegebenen SPEC-03-Track.
+- Vertrauliche Runs benötigen einen nach [`../LOCAL-PRIVATE-SETUP.md`](../LOCAL-PRIVATE-SETUP.md) und [`../SECURITY.md`](../SECURITY.md) freigegebenen Track.
 
 ## Auswertung
 

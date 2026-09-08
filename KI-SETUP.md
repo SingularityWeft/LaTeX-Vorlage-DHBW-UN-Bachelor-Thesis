@@ -1,6 +1,6 @@
 # KI-Setup: „Ja, bitte einrichten“
 
-**Setup-Version:** `research-setup-v1`
+**Setup-Version:** `research-setup-v2`
 
 Diese Datei ist der verbindliche Ablauf für einen lokalen Coding-Agenten, wenn der User „Ja, bitte einrichten“, „richte die Vorlage ein“, „mach das arbeitsfertig“ oder ähnlich sagt. Das Setup unterstützt drei Profile:
 
@@ -22,7 +22,7 @@ Ein reines Chatmodell ohne lokalen Datei- und Terminalzugriff kann den Ablauf nu
 6. Remotes werden nicht automatisch geändert. Es gibt keinen automatischen Commit und keinen automatischen Push.
 7. Installationen und Downloads erfordern eine ausdrückliche Freigabe.
 8. Geheimnisse, personenbezogene Daten und vertrauliche Inhalte werden weder erfunden noch in Prompts, Logs oder Commits aufgenommen.
-9. Bei `vertraulich/Geschäftsgeheimnis` sind Cloudmodelle, Websuche und Remote-MCPs bis zum SPEC-03-Preflight ausgeschaltet.
+9. Bei `vertraulich/Geschäftsgeheimnis` sind Cloudmodelle, Websuche und Remote-MCPs bis zum freigegebenen Preflight aus [`LOCAL-PRIVATE-SETUP.md`](LOCAL-PRIVATE-SETUP.md) ausgeschaltet.
 
 ## Ablauf für den Coding-Agenten
 
@@ -82,9 +82,11 @@ Lege den Ausführungspfad aus dem Schutzbedarf fest:
 |---|---|---|---|
 | öffentlich | Cloud-managed comfort | möglich, aber nicht automatisch gestartet | Profil, Methode und Datenweg bestätigen |
 | intern | Hybrid-redacted | aus, bis Redaktion und Datenweg bestätigt sind | Redaktions- und Data/Ethics-Freigabe |
-| vertraulich/Geschäftsgeheimnis | Local/On-Prem, nicht still überschreibbar | aus; bis zum SPEC-03-Preflight auch keine Cloudmodelle, Websuche oder Remote-MCPs | Datenschutz-, Security- und Data/Ethics-Freigabe |
+| vertraulich/Geschäftsgeheimnis | Local/On-Prem, nicht still überschreibbar | aus; bis zum freigegebenen Private-Track-Preflight auch keine Cloudmodelle, Websuche oder Remote-MCPs | Datenschutz-, Security- und Data/Ethics-Freigabe |
 
 Ein sichererer Pfad darf gewählt werden. Ein weniger restriktiver Pfad braucht eine ausdrücklich dokumentierte menschliche Freigabe. Dieses Setup wählt keine Runtime, kein Modell und keinen Endpoint.
+
+Die technischen und organisatorischen Grenzen des gewählten Pfads stehen in [`execution-tracks/README.md`](execution-tracks/README.md). Vor echten Daten wird das [`Deployment-Manifest`](templates/research/deployment-manifest.md) manuell ausgefüllt und gemäß [`SECURITY.md`](SECURITY.md) freigegeben. Das Workspace-Setup selbst startet weiterhin keine Runtime und konfiguriert keinen Endpoint.
 
 ### 4. Zielplan und Konflikte anzeigen
 
@@ -95,6 +97,7 @@ Ziel des Research-Workspace ist ausschließlich `research/`. Nur beim DHBW-Profi
 | `research/PROJECT.md` | `templates/research/project-manifest.md` |
 | `research/method-choice.md` | `templates/research/method-choice.md` |
 | `research/data-ethics-check.md` | `templates/research/data-ethics-check.md` |
+| `research/deployment-manifest.md` | `templates/research/deployment-manifest.md` |
 | `research/project-brief.md` | `templates/research/project-brief.md` |
 | `research/research-question.md` | `templates/research/research-question.md` |
 | `research/evidence-log.md` | `templates/research/evidence-log.md` |
