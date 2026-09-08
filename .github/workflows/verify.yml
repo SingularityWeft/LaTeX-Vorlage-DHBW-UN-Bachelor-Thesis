@@ -28,7 +28,8 @@ jobs:
             texlive-fonts-recommended \
             texlive-lang-german \
             texlive-latex-extra \
-            texlive-pictures
+            texlive-pictures \
+            texlive-plain-generic
 
       - name: Gemeinsamen Verify-Vertrag ausführen
         run: bash scripts/verify-repo.sh --require-latex
