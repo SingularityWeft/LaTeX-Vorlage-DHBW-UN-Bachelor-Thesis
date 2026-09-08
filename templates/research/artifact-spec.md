@@ -1,5 +1,7 @@
 # Artefaktspezifikation
 
+**Template-Version:** `research-template-v1`
+
 ## Zweck
 
 - **Artefaktname und Version:**

@@ -1,5 +1,7 @@
 # Decision Log
 
+**Template-Version:** `research-template-v1`
+
 Nutze einen Eintrag pro fachlicher, methodischer oder produktbezogener Entscheidung. Ergebnisse allein treffen keine Entscheidung.
 
 ## Entscheidung D-001

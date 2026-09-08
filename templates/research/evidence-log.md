@@ -1,5 +1,7 @@
 # Evidence Log
 
+**Template-Version:** `research-template-v1`
+
 Erfasse nur Quellen, die du tatsächlich geöffnet und geprüft hast. KI-generierte Zusammenfassungen sind keine Primärquelle.
 
 | Evidence ID | Quelle/Titel | Autor oder Institution | Veröffentlichungs- oder Versionsdatum | Abrufdatum | Fundstelle | Welche Aussage wird belegt? | Belegstatus | Ein-/Ausschluss und Grund | Menschlich angenommen? |

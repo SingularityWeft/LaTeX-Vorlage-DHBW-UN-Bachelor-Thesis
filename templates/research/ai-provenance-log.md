@@ -1,5 +1,7 @@
 # AI-Provenance Log
 
+**Template-Version:** `research-template-v1`
+
 Dokumentiere den tatsächlichen KI-Beitrag, ohne sensible Prompts, personenbezogene Daten oder vertrauliche Rohdaten zu kopieren.
 
 ## Eintrag AI-001

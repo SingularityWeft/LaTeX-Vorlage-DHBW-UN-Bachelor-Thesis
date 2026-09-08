@@ -1,5 +1,7 @@
 # Evaluationsplan
 
+**Template-Version:** `research-template-v1`
+
 ## Evaluationsvertrag
 
 - **Methodenpfad und konkreter Studientyp:**

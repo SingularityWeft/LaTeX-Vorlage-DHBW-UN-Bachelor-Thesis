@@ -1,5 +1,7 @@
 # Methoden- und Autonomiewahl
 
+**Template-Version:** `research-template-v1`
+
 > Fülle zunächst nur abstrakte Angaben aus. Trage vor der Schutzbedarfswahl keine echten Unternehmensdaten, personenbezogenen Daten oder Geheimnisse ein. Der Router entscheidet nicht automatisch.
 
 ## 1. Kurzbeschreibung

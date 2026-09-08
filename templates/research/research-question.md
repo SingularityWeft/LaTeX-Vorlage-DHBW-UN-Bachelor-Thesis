@@ -1,5 +1,7 @@
 # Forschungsfrage
 
+**Template-Version:** `research-template-v1`
+
 ## Ausgangspunkt
 
 - **Problem und Zielgruppe:**

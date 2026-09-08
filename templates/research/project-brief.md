@@ -1,5 +1,7 @@
 # Project Brief
 
+**Template-Version:** `research-template-v1`
+
 ## Orientierung
 
 - **Profil:** DHBW-Thesis / Unternehmensprojekt / Informatikprojekt

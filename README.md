@@ -32,7 +32,7 @@ Wenn die KI im Ordner steht, reicht:
 Ja, bitte einrichten.
 ```
 
-Die KI richtet dann das LaTeX-Projekt arbeitsfertig ein: sie schützt das öffentliche Vorlagen-Remote vor versehentlichen Pushes, legt eine `ki-erklaerung.md` an, prüft die LaTeX-Toolchain, baut eine erste `main.pdf` und listet die offenen Platzhalter für Deckblatt und Metadaten.
+Die KI fragt nur nach dem noch fehlenden Profil und Schutzbedarf. Wähle für den normalen LaTeX-Schnellstart `DHBW-Thesis`; dann schützt sie das öffentliche Vorlagen-Remote vor Pushes, legt fehlende Arbeitsdateien an, prüft die LaTeX-Toolchain, baut eine erste `main.pdf` und listet offene Platzhalter für Deckblatt und Metadaten. Vorhandene Dateien werden nicht überschrieben, und Staging oder Commit erfolgen erst nach einer sichtbaren Dateiliste und deiner Freigabe.
 
 ## Optional: AI-supported Research
 
@@ -47,6 +47,22 @@ Nach der dokumentierten Methodenwahl geht es mit dem passenden Profil weiter:
 - [`Informatikprojekt`](profiles/informatikprojekt.md) – Artefakt- oder empirische Studie mit Baseline, Reproduzierbarkeit und Threats to Validity.
 
 Alle drei Profile verwenden denselben manuellen Research-Kern. LaTeX ist nur für den Thesis-Pfad erforderlich.
+
+Du kannst Profil, Schutzbedarf und – falls bereits menschlich entschieden – die Methode direkt im Setup-Prompt nennen. Bereits genannte Angaben fragt die KI nicht erneut ab:
+
+```text
+Richte eine DHBW-Thesis mit internem Schutzbedarf ein. Die Methodenwahl ist noch offen.
+```
+
+```text
+Richte ein vertrauliches Unternehmensprojekt ein. Nutze Assist und Local/On-Prem; verwende noch keine echten Projektdaten.
+```
+
+```text
+Richte ein öffentliches Informatikprojekt mit dem Komfortpfad Cloud-managed ein. Die empirische Softwareforschung ist bereits menschlich bestätigt.
+```
+
+Der genaue sichere Ablauf, die drei Ausführungspfade und die Git Human Gates stehen in [`KI-SETUP.md`](KI-SETUP.md). Auch dieser Setup-Schritt startet keine Agentenläufe und wählt weder Runtime noch Modell oder Endpoint.
 
 ## Vortragsmaterial
 
@@ -140,7 +156,7 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
 ├── profiles/                              # Einstiege für Thesis, Unternehmen und Informatik
-├── templates/research/                    # kopierbare manuelle Research-Templates
+├── templates/research/                    # Research-Templates inklusive Projektmanifest
 ├── .claude/
 │   └── skills/
 │       └── latex-build/

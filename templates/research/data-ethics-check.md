@@ -1,5 +1,7 @@
 # Data/Ethics Check
 
+**Template-Version:** `research-template-v1`
+
 Fülle diesen Check vor jedem Import echter Daten aus. Bis zur menschlichen Freigabe arbeitest du nur mit abstrakten oder synthetischen Angaben. Dieses Template ist keine Rechts-, Datenschutz- oder Ethikberatung.
 
 ## Dateninventar

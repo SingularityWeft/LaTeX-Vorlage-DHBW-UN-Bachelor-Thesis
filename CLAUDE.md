@@ -7,8 +7,9 @@ Dies ist ein LaTeX-Schreibprojekt im DHBW-Layout. Für Claude Code gelten diesel
 Wenn der User "Ja, bitte einrichten", "richte die Vorlage ein", "mach das arbeitsfertig" oder ähnlich sagt:
 
 1. Lies `KI-SETUP.md`.
-2. Führe den dort beschriebenen Ablauf aus.
-3. Bei einer persönlichen Einrichtung: push nie in das öffentliche Vorlagen-Repo `SingularityWeft/LaTeX-Vorlage-DHBW-UN-Bachelor-Thesis`.
+2. Übernimm ein genanntes Profil und einen genannten Schutzbedarf. Frage nur nach fehlenden Angaben: Profil (`DHBW-Thesis`, `Unternehmensprojekt`, `Informatikprojekt`) und Schutzbedarf (`öffentlich`, `intern`, `vertraulich/Geschäftsgeheimnis`).
+3. Führe dann den profilbewussten Ablauf aus. Nutze bis zum Data/Ethics Gate nur abstrakte oder synthetische Angaben; `Assist` ist der Safe Default und eine uneindeutige Methode bleibt offen.
+4. Verändere keine bestehenden Dateien oder Git-Zustände. Kein Commit ohne sichtbare Allowlist und Human Gate; nie automatisch und nie in das öffentliche Vorlagen-Repo pushen.
 
 ## Build-Trigger
 
@@ -17,5 +18,8 @@ Wenn der User "kompiliere", "build", "render" oder "PDF erstellen" sagt, verwend
 ## Git und Provenance
 
 - Keine destruktiven Git-Befehle ohne explizite Zustimmung.
-- Wenn `ki-erklaerung.md` existiert, am Sessionende einen knappen Eintrag anhängen.
+- Remotes beim Setup nur lesen; das öffentliche Vorlagen-Remote bleibt push-gesperrt.
+- Nur eigene, einzeln aufgelistete Pfade stagen. `git add -A` und `git add .` sind verboten.
+- Staging und Commit benötigen getrennte Human Gates; nie automatisch pushen.
+- Wenn eine unveränderte `ki-erklaerung.md` existiert, am Sessionende einen knappen Eintrag anhängen. Eine bereits vor der Session geänderte Datei bleibt ohne Human Gate unangetastet.
 - Bei KI-generierten Textpassagen in `.tex`-Dateien einen Kommentar setzen, damit der User sie später prüfen kann.
