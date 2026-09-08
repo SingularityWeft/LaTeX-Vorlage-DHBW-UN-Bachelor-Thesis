@@ -24,6 +24,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y \
             biber \
+            texlive-bibtex-extra \
             texlive-fonts-recommended \
             texlive-lang-german \
             texlive-latex-extra \
