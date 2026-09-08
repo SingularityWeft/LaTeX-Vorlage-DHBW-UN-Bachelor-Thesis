@@ -34,6 +34,12 @@ Ja, bitte einrichten.
 
 Die KI richtet dann das LaTeX-Projekt arbeitsfertig ein: sie schützt das öffentliche Vorlagen-Remote vor versehentlichen Pushes, legt eine `ki-erklaerung.md` an, prüft die LaTeX-Toolchain, baut eine erste `main.pdf` und listet die offenen Platzhalter für Deckblatt und Metadaten.
 
+## Optional: AI-supported Research
+
+Der schnelle LaTeX-Weg oben bleibt der Primärweg. Wenn du zusätzlich ein Forschungs-, Unternehmens- oder Informatikprojekt methodisch planen und dabei KI kontrolliert einsetzen möchtest, beginne mit [`RESEARCH-START.md`](RESEARCH-START.md).
+
+Dort entscheidest du zuerst in Alltagssprache, ob eher Design Science Research (DSR), Action Design Research (ADR), empirische Softwareforschung oder reine Umsetzung ohne Forschungsanspruch passt. Danach wählst du, wie viel die KI tun darf. Der Router trifft keine automatische Methodenentscheidung und startet keine Agentenläufe.
+
 ## Vortragsmaterial
 
 Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
