@@ -85,3 +85,12 @@ Diese Rollen können kombiniert werden, müssen aber im Projekt getrennt benannt
 - KI an der DHBW: Das [DHBW-Positionspapier](https://www.dhbw.de/fileadmin/user_upload/Dokumente/Positionspapiere_und_Strategie/Positionspapier_zu_kuenstlicher_Intelligenz.pdf) betont Prüfung, Reflexion, Transparenz und akademische Integrität. Konkrete Standort-, Studiengangs- und Betreuungsvorgaben musst du zusätzlich lokal klären.
 
 Das ist eine Entscheidungshilfe, keine vollständige Methodenlehre. Nach der Auswahl beginnt erst das eigentliche Forschungsdesign.
+
+## Nach dem Human Gate weiterarbeiten
+
+1. Wähle dein Profil: [`DHBW-Thesis`](profiles/dhbw-thesis.md), [`Unternehmensprojekt`](profiles/unternehmensprojekt.md) oder [`Informatikprojekt`](profiles/informatikprojekt.md).
+2. Prüfe vor jedem Datenimport den [`Data/Ethics Check`](templates/research/data-ethics-check.md).
+3. Starte den gemeinsamen Kern mit dem [`Project Brief`](templates/research/project-brief.md) und der [`Forschungsfrage`](templates/research/research-question.md).
+4. Wenn DSR bestätigt wurde, lies zusätzlich [`DSR-START.md`](DSR-START.md). DSR wird nicht automatisch vorausgesetzt.
+
+Du kannst alle Templates manuell kopieren und ausfüllen. Ein Coding-Agent, Setup-Assistent oder LaTeX ist dafür nicht nötig.

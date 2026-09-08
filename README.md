@@ -40,6 +40,14 @@ Der schnelle LaTeX-Weg oben bleibt der Primärweg. Wenn du zusätzlich ein Forsc
 
 Dort entscheidest du zuerst in Alltagssprache, ob eher Design Science Research (DSR), Action Design Research (ADR), empirische Softwareforschung oder reine Umsetzung ohne Forschungsanspruch passt. Danach wählst du, wie viel die KI tun darf. Der Router trifft keine automatische Methodenentscheidung und startet keine Agentenläufe.
 
+Nach der dokumentierten Methodenwahl geht es mit dem passenden Profil weiter:
+
+- [`DHBW-Thesis`](profiles/dhbw-thesis.md) – wissenschaftliche Arbeit mit lokalen Prüfungs-, Betreuungs- und KI-Vorgaben.
+- [`Unternehmensprojekt`](profiles/unternehmensprojekt.md) – Pilot, DSR/ADR oder Engineering mit Business-, Akzeptanz- und Risikokriterien.
+- [`Informatikprojekt`](profiles/informatikprojekt.md) – Artefakt- oder empirische Studie mit Baseline, Reproduzierbarkeit und Threats to Validity.
+
+Alle drei Profile verwenden denselben manuellen Research-Kern. LaTeX ist nur für den Thesis-Pfad erforderlich.
+
 ## Vortragsmaterial
 
 Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
@@ -126,9 +134,13 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ├── KI-SETUP.md                            # Ablauf für "Ja, bitte einrichten"
 ├── CLAUDE.md                              # Projektanweisungen für Claude Code
 ├── AGENTS.md                              # Projektanweisungen für OpenAI Codex / GPT-Agenten
+├── RESEARCH-START.md                      # optionaler Methoden- und Autonomie-Router
+├── DSR-START.md                           # manueller DSR-Pfad nach bestätigter Methodenwahl
 ├── main.tex                               # Hauptdokument (Präambel + Kapitel)
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
+├── profiles/                              # Einstiege für Thesis, Unternehmen und Informatik
+├── templates/research/                    # kopierbare manuelle Research-Templates
 ├── .claude/
 │   └── skills/
 │       └── latex-build/
