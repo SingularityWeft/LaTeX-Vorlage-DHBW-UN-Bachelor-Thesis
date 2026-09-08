@@ -64,6 +64,8 @@ Richte ein öffentliches Informatikprojekt mit dem Komfortpfad Cloud-managed ein
 
 Der genaue sichere Ablauf, die drei Ausführungspfade und die Git Human Gates stehen in [`KI-SETUP.md`](KI-SETUP.md). Auch dieser Setup-Schritt startet keine Agentenläufe und wählt weder Runtime noch Modell oder Endpoint.
 
+Erst wenn Methode, Datenweg und Gates bestätigt sind, beschreibt [`AGENTIC-RESEARCH.md`](AGENTIC-RESEARCH.md) den optionalen begrenzten Experimentierpfad. Ohne freigegebenes Research Program und Eval Cases bleibt `Assist` aktiv; es startet kein Lauf.
+
 ## Vortragsmaterial
 
 Zum DHBW-Abendvortrag gibt es die Folien im Ordner [`vortrag/`](vortrag/):
@@ -152,11 +154,14 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ├── AGENTS.md                              # Projektanweisungen für OpenAI Codex / GPT-Agenten
 ├── RESEARCH-START.md                      # optionaler Methoden- und Autonomie-Router
 ├── DSR-START.md                           # manueller DSR-Pfad nach bestätigter Methodenwahl
+├── AGENTIC-RESEARCH.md                    # begrenzter Research-Loop mit Human Gates
 ├── main.tex                               # Hauptdokument (Präambel + Kapitel)
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
 ├── profiles/                              # Einstiege für Thesis, Unternehmen und Informatik
 ├── templates/research/                    # Research-Templates inklusive Projektmanifest
+├── evals/                                 # Vertrag für Exploration und gesperrte Bestätigung
+├── runs/                                  # Append-only-Vertrag für Run Records
 ├── .claude/
 │   └── skills/
 │       └── latex-build/

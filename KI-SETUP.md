@@ -15,7 +15,7 @@ Ein reines Chatmodell ohne lokalen Datei- und Terminalzugriff kann den Ablauf nu
 ## Unveränderliche Sicherheitsregeln
 
 1. Vor echten Projektdaten werden nur fehlendes Profil und fehlender Schutzbedarf erfragt.
-2. `Assist` ist die Standard-Autonomiestufe. `Bounded autonomous` ist ohne ein in SPEC-04 bestätigtes Research Program nicht zulässig und wird auf `Assist` zurückgesetzt.
+2. `Assist` ist die Standard-Autonomiestufe. `Bounded autonomous` ist ohne den Vertrag aus `AGENTIC-RESEARCH.md` und ein bestätigtes Research Program nicht zulässig und wird auf `Assist` zurückgesetzt.
 3. Ist die Methodenwahl uneindeutig, bleibt sie `offen`; der Agent entscheidet sie nicht automatisch.
 4. Vor einem bestätigten Data/Ethics Gate werden ausschließlich abstrakte oder synthetische Angaben verwendet.
 5. Bestehende Dateien, vorhandene Änderungen und der aktuelle Git-Staging-Bereich werden nicht überschrieben, übernommen oder bereinigt.

@@ -11,6 +11,16 @@ Wenn der User "Ja, bitte einrichten", "richte die Vorlage ein", "mach das arbeit
 3. Führe dann den profilbewussten Ablauf aus. Nutze bis zum Data/Ethics Gate nur abstrakte oder synthetische Angaben; `Assist` ist der Safe Default und eine uneindeutige Methode bleibt offen.
 4. Verändere keine bestehenden Dateien oder Git-Zustände. Kein Commit ohne sichtbare Allowlist und Human Gate; nie automatisch und nie in das öffentliche Vorlagen-Repo pushen.
 
+## Agentic-Research-Trigger
+
+Wenn der User „Agentic Research“, „Bounded autonomous“, „Experimentierloop“, „Versuchsserie“ oder einen autonomen Research-Lauf anfordert:
+
+1. Lies `AGENTIC-RESEARCH.md`, das freigegebene `research/research-program.md` und die referenzierten Eval Cases.
+2. Ohne freigegebenes Programm, Eval Case, Daten-/Methoden-Gates und endliche Budgets startet kein Lauf; bleibe in `Assist`.
+3. Halte Branch, Schreibpfade, Tools und Netzwerk-Allowlist exakt ein. Jeder Verstoß oder Zugriff auf Bestätigungs-Evals stoppt mit `human-review`.
+4. Committe jeden Versuch, verwende für `discard` einen normalen Revert-Commit und bewahre Run Records für alle Zustände. Kein Reset, Force Push oder Push.
+5. Daten-, Prompt-, Harness- oder Eval-Änderungen beginnen eine neue Serie. Bestätigung erfolgt einmalig durch die getrennte Evaluator-Rolle; `promoted` braucht ein menschliches Gate.
+
 ## Build-Trigger
 
 Wenn der User "kompiliere", "build", "render" oder "PDF erstellen" sagt, verwende den Skill `.claude/skills/latex-build/SKILL.md`.

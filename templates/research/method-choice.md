@@ -1,6 +1,6 @@
 # Methoden- und Autonomiewahl
 
-**Template-Version:** `research-template-v1`
+**Template-Version:** `research-template-v2`
 
 > Fülle zunächst nur abstrakte Angaben aus. Trage vor der Schutzbedarfswahl keine echten Unternehmensdaten, personenbezogenen Daten oder Geheimnisse ein. Der Router entscheidet nicht automatisch.
 
@@ -63,7 +63,7 @@ Wähle genau eine Stufe. Ohne ausdrücklich bestätigte Änderung bleibt `Assist
 - [ ] **Co-execute:** KI führt jeweils einen klar beschriebenen und zuvor bestätigten Schritt aus; der Mensch prüft danach das Ergebnis.
 - [ ] **Bounded autonomous:** KI darf mehrere Schritte nur innerhalb eines vorab freigegebenen Research Programs ausführen.
 
-`Bounded autonomous` ist erst mit dem in SPEC-04 vorgesehenen Vertrag zulässig. SPEC-04 ist in diesem Slice nicht implementiert; diese Auswahl startet keinen Lauf.
+`Bounded autonomous` ist nur mit einem nach der Root-Datei `AGENTIC-RESEARCH.md` vollständig ausgefüllten und menschlich freigegebenen Research Program zulässig. Ohne diesen Vertrag startet kein Lauf.
 
 - **Begründung einer Abweichung von `Assist`:**
 - **Erlaubte KI-Rolle:** [ ] Werkzeug · [ ] Ausführungsagent · [ ] Forschungsgegenstand

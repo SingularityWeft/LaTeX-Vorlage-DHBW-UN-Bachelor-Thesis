@@ -1,6 +1,6 @@
 # Research Project Manifest
 
-- **Template-Version:** `research-project-v1`
+- **Template-Version:** `research-project-v2`
 - **Setup-Version:** `research-setup-v1`
 
 > Dieses Manifest dokumentiert die sichere Einrichtung. Bis zum bestätigten Data/Ethics Gate nur abstrakte oder synthetische Angaben eintragen; keine Namen, Unternehmensgeheimnisse, personenbezogenen Daten, Zugangsdaten oder vertraulichen Dokumentinhalte.
@@ -19,7 +19,7 @@
 - **Externe Verarbeitung:** [nicht gestartet / aus bis Freigabe]
 - **Data/Ethics Gate:** [offen / bestätigt mit Grenzen]
 
-Wenn Methode oder Datenweg nicht eindeutig sind, bleiben sie offen. Das Setup trifft keine automatische Methodenentscheidung. `Bounded autonomous` ist ohne bestätigtes Research Program aus SPEC-04 nicht zulässig.
+Wenn Methode oder Datenweg nicht eindeutig sind, bleiben sie offen. Das Setup trifft keine automatische Methodenentscheidung. `Bounded autonomous` ist ohne den Vertrag aus der Root-Datei `AGENTIC-RESEARCH.md` und ein bestätigtes Research Program nicht zulässig.
 
 ## 2. Abstrakter Projektsteckbrief
 
@@ -35,6 +35,7 @@ Wenn Methode oder Datenweg nicht eindeutig sind, bleiben sie offen. Das Setup tr
 |---|---|---|---|---|
 | Profil und Methode | offen | – | – | Methodenwahl gemeinsam prüfen |
 | Autonomiestufe | `Assist` | – | – | Abweichung ausdrücklich begründen |
+| Research Program | nicht freigegeben | – | – | Vor `Bounded autonomous` den Vertrag aus `AGENTIC-RESEARCH.md` erfüllen |
 | Daten und Ethik | offen | – | – | Vor echten Daten `data-ethics-check.md` abschließen |
 | Ausführungspfad | sicherer Default | – | – | Datenweg vor externer Verarbeitung bestätigen |
 | Git-Staging | offen | – | – | Exakte Allowlist anzeigen |
@@ -46,8 +47,8 @@ Für jede Setup-Zieldatei Status, Quellversion und SHA-256-Hash dokumentieren. E
 
 | Zielpfad | Quelle | Template-Version | SHA-256 | Status | Hinweis |
 |---|---|---|---|---|---|
-| `research/PROJECT.md` | `templates/research/project-manifest.md` | `research-project-v1` | [Hash] | [Status] | [Hinweis] |
-| `research/method-choice.md` | `templates/research/method-choice.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
+| `research/PROJECT.md` | `templates/research/project-manifest.md` | `research-project-v2` | [Hash] | [Status] | [Hinweis] |
+| `research/method-choice.md` | `templates/research/method-choice.md` | `research-template-v2` | [Hash] | [Status] | [Hinweis] |
 | `research/data-ethics-check.md` | `templates/research/data-ethics-check.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
 | `research/project-brief.md` | `templates/research/project-brief.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |
 | `research/research-question.md` | `templates/research/research-question.md` | `research-template-v1` | [Hash] | [Status] | [Hinweis] |

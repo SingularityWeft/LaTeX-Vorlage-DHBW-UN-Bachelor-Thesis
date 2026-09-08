@@ -58,7 +58,7 @@ Dokumentiere Entscheidung, Begründung, geprüfte Originalquelle und offene Bedi
 | **Co-execute** | Einen klar beschriebenen Einzelschritt nach ausdrücklicher Bestätigung ausführen, zum Beispiel eine erlaubte Datei ändern oder eine freigegebene Auswertung starten. | Ziel, Daten, Werkzeuge und erwartetes Ergebnis vor jedem Schritt bestätigen; Resultat danach prüfen. |
 | **Bounded autonomous** | Mehrere vorab erlaubte Schritte innerhalb eines freigegebenen Research Programs ausführen. | Research Program, Schreib- und Datenbereiche, Tools, Netzwerk, Evaluation, Budget, Stopbedingungen und Human Gates vorab freigeben; Ergebnisse und Claims prüfen. |
 
-`Bounded autonomous` ist Gegenstand von **SPEC-04** und in diesem ersten Slice noch nicht implementiert. Diese Seite startet keinen Lauf. Ohne freigegebenes Research Program bleibt die Stufe unzulässig.
+`Bounded autonomous` ist ausschließlich über den Vertrag in [`AGENTIC-RESEARCH.md`](AGENTIC-RESEARCH.md) zulässig. Diese Seite startet keinen Lauf. Ohne freigegebenes Research Program und versionierte Eval Cases bleibt die Stufe unzulässig.
 
 ## Was die Begriffe bedeuten
 
