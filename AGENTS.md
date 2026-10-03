@@ -1,6 +1,16 @@
-# LaTeX-Thesis-Projekt — Konventionen für KI-Tools (Codex / Claude)
+# LaTeX-Thesis-Projekt — Konventionen für KI-Tools (Codex / Claude / Gemini)
 
-Dies ist ein LaTeX-Schreibprojekt im DHBW-Layout (Studiengang Unternehmertum). Halte dich an die folgenden Regeln, wenn du in diesem Verzeichnis arbeitest.
+Dies ist ein LaTeX-Schreibprojekt im DHBW-Layout (Studiengang Unternehmertum). Halte dich an die folgenden Regeln, wenn du in diesem Verzeichnis arbeitest. `CLAUDE.md` und `GEMINI.md` verweisen auf diese Datei.
+
+## Thesis-Arbeitsmodus (private Arbeitskopie)
+
+Prüfe zu Beginn jeder Sitzung, ob `thesis/STAND.md` existiert und die Zeile `Arbeitsmodus: produktiv` enthält. Wenn ja, gilt `THESIS-ARBEITSMODUS.md` vollständig und hat für Git, Datenweg und Provenance Vorrang vor den Setup-Regeln in dieser Datei:
+
+1. Mit `git pull --ff-only` synchronisieren, dann `thesis/STAND.md` und `thesis/GLIEDERUNG.md` lesen.
+2. Nur die Dateien des aktuellen Auftrags laden.
+3. Am Ende jeder Arbeitseinheit den Stand pflegen, eigene Pfade mit den KI-Angaben (`KI-System` mit dem tatsächlich genutzten Werkzeug, etwa `Codex (OpenAI)`, dazu `KI-Arbeitsschritt` und `KI-Beitrag`) committen und zu `origin` hochladen, nie zu `vorlage`.
+
+Will der User den Arbeitsmodus einrichten, folge `KI-SETUP.md`, Abschnitt „Thesis-Arbeitsmodus einrichten“.
 
 ## Setup-Trigger
 
@@ -58,9 +68,11 @@ Nach jedem Build:
 - prüfe `main.log` auf neue `Error` / `!`-Zeilen und melde sie,
 - ignoriere "Underfull/Overfull hbox" (Layout-Warnungen).
 
-Bei fehlendem `pdflatex` oder `biber`: User auf MacTeX-Installation hinweisen (<https://www.tug.org/mactex/>), nicht weitermachen.
+Bei fehlendem `pdflatex` oder `biber`: User auf die Installation hinweisen (macOS: MacTeX, <https://www.tug.org/mactex/>; Windows und Linux: TeX Live, <https://www.tug.org/texlive/>), nicht weitermachen.
 
 ## Git
+
+Diese Regeln gelten außerhalb des Thesis-Arbeitsmodus. Im Arbeitsmodus gelten die Git-Regeln aus `THESIS-ARBEITSMODUS.md`.
 
 1. Vor und nach Änderungen `git status --short --branch` prüfen. Bereits geänderte, unversionierte oder gestagte fremde Dateien getrennt dokumentieren und unangetastet lassen.
 2. Remotes nur lesen. Zeigt eines auf das öffentliche Vorlagen-Repo, ist jeder Push dorthin verboten; Umbenennen oder Ergänzen eines Remotes braucht eine separate Freigabe.
@@ -71,6 +83,8 @@ Bei fehlendem `pdflatex` oder `biber`: User auf MacTeX-Installation hinweisen (<
 Keine destruktiven Git-Befehle (`reset --hard`, `push --force`, `branch -D`, `clean -f`) ohne explizite Zustimmung.
 
 ## Provenance (Akademische KI-Erklärung)
+
+Im Thesis-Arbeitsmodus ersetzen die KI-Angaben in den Commits die Einträge in `ki-erklaerung.md`; den Entwurf der Erklärung erzeugt `scripts/ki-erklaerung.py`. Außerhalb des Arbeitsmodus gilt:
 
 Wenn im Working Directory eine unveränderte Datei `ki-erklaerung.md` existiert: am Sessionende ungefragt einen Eintrag anhängen. War sie bereits vor der Session geändert, bleibt sie ohne Human Gate unangetastet. Format pro Eintrag: Datum · Tool · Aufgabe · Umfang · ggf. importierte externe KI-Quellen (Gemini, GPT etc.) mit Quellenangabe.
 

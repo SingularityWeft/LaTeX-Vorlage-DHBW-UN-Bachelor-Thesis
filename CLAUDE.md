@@ -2,6 +2,16 @@
 
 Dies ist ein LaTeX-Schreibprojekt im DHBW-Layout. Für Claude Code gelten dieselben Projektregeln wie in `AGENTS.md`.
 
+## Thesis-Arbeitsmodus (private Arbeitskopie)
+
+Prüfe zu Beginn jeder Sitzung, ob `thesis/STAND.md` existiert und die Zeile `Arbeitsmodus: produktiv` enthält. Wenn ja, gilt `THESIS-ARBEITSMODUS.md` vollständig und hat für Git, Datenweg und Provenance Vorrang vor den Setup-Regeln in dieser Datei:
+
+1. Mit `git pull --ff-only` synchronisieren, dann `thesis/STAND.md` und `thesis/GLIEDERUNG.md` lesen.
+2. Nur die Dateien des aktuellen Auftrags laden.
+3. Am Ende jeder Arbeitseinheit den Stand pflegen, eigene Pfade mit den KI-Angaben (`KI-System: Claude Code (Anthropic)`, `KI-Arbeitsschritt`, `KI-Beitrag`) committen und zu `origin` hochladen, nie zu `vorlage`.
+
+Will der User den Arbeitsmodus einrichten, folge `KI-SETUP.md`, Abschnitt „Thesis-Arbeitsmodus einrichten“.
+
 ## Setup-Trigger
 
 Wenn der User "Ja, bitte einrichten", "richte die Vorlage ein", "mach das arbeitsfertig" oder ähnlich sagt:
@@ -35,6 +45,8 @@ Wenn vertrauliche Daten, Geschäftsgeheimnisse, `Local/On-Prem`, `Hybrid-redacte
 Wenn der User "kompiliere", "build", "render" oder "PDF erstellen" sagt, verwende den Skill `.claude/skills/latex-build/SKILL.md`.
 
 ## Git und Provenance
+
+Diese Regeln gelten außerhalb des Thesis-Arbeitsmodus. Im Arbeitsmodus gelten die Git-Regeln und KI-Angaben aus `THESIS-ARBEITSMODUS.md`.
 
 - Keine destruktiven Git-Befehle ohne explizite Zustimmung.
 - Remotes beim Setup nur lesen; das öffentliche Vorlagen-Remote bleibt push-gesperrt.

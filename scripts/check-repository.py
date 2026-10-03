@@ -69,9 +69,21 @@ REQUIRED_PATHS = [
     "scripts/verify-repo.sh",
     ".github/workflows/verify.yml",
     "main.tex",
+    "kapitel/01-einleitung.tex",
+    "kapitel/02-hauptteil.tex",
+    "kapitel/03-fazit.tex",
     "literatur.bib",
     "main.pdf",
+    "THESIS-ARBEITSMODUS.md",
+    "GEMINI.md",
+    "templates/thesis/stand.md",
+    "templates/thesis/gliederung.md",
+    "templates/thesis/literaturnotiz.md",
+    "scripts/ki-erklaerung.py",
+    "scripts/tests/test_ki_erklaerung.py",
 ]
+
+AGENT_FILES = ["CLAUDE.md", "AGENTS.md", "GEMINI.md"]
 
 PROFILE_PATHS = [
     "profiles/dhbw-thesis.md",
@@ -165,6 +177,14 @@ ALLOWED_GIT_POLICY_LINES = Counter(
         (
             "AGENTS.md",
             "5. Nie automatisch pushen. Ein Push braucht eine ausdrückliche Anweisung und darf niemals in das öffentliche Vorlagen-Repo gehen.",
+        ): 1,
+        (
+            "THESIS-ARBEITSMODUS.md",
+            "- Nur eigene Pfade einzeln stagen; kein `git add -A` und kein `git add .`.",
+        ): 1,
+        (
+            "THESIS-ARBEITSMODUS.md",
+            "- Kein `reset --hard`, kein `push --force`, kein `clean -f` und kein Löschen fremder Arbeit.",
         ): 1,
     }
 )
@@ -395,6 +415,8 @@ def check_git_policy(failures: list[str]) -> None:
         "AGENTIC-RESEARCH.md",
         "LOCAL-PRIVATE-SETUP.md",
         "SECURITY.md",
+        "GEMINI.md",
+        "THESIS-ARBEITSMODUS.md",
     }
     policy_pattern = re.compile(
         r"git add -A|git add \.|git\s+push|reset --hard|push --force|clean -f|"
@@ -415,6 +437,22 @@ def check_git_policy(failures: list[str]) -> None:
         missing = ALLOWED_GIT_POLICY_LINES - seen
         if missing:
             fail(failures, f"dokumentierte Git-Verbots-Allowlist ist veraltet: {dict(missing)}")
+
+
+def check_agent_files(failures: list[str]) -> None:
+    """Alle Agenten-Dateien müssen auf denselben Arbeitsmodus-Vertrag verweisen."""
+    for relative in AGENT_FILES:
+        content = (ROOT / relative).read_text(encoding="utf-8")
+        for required in ("THESIS-ARBEITSMODUS.md", "thesis/STAND.md", "Arbeitsmodus: produktiv"):
+            if required not in content:
+                fail(failures, f"Agenten-Datei verweist nicht auf den Arbeitsmodus ({required}): {relative}")
+    stand = (ROOT / "templates" / "thesis" / "stand.md").read_text(encoding="utf-8")
+    if "\nArbeitsmodus: produktiv\n" not in stand:
+        fail(failures, "templates/thesis/stand.md enthält die Zeile 'Arbeitsmodus: produktiv' nicht")
+    ignored = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
+    for entry in ("literatur/pdf/", ".obsidian/"):
+        if entry not in ignored:
+            fail(failures, f".gitignore enthält {entry} nicht")
 
 
 def check_workflow(failures: list[str]) -> None:
@@ -450,6 +488,7 @@ def main() -> int:
     check_run_records(failures)
     check_content_patterns(failures)
     check_git_policy(failures)
+    check_agent_files(failures)
     check_workflow(failures)
     return report(failures)
 

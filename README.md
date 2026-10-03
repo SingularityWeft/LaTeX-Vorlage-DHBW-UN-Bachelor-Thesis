@@ -24,6 +24,7 @@ https://github.com/SingularityWeft/LaTeX-Vorlage-DHBW-UN-Bachelor-Thesis
 Wechsle danach in den Ordner und lies `README.md`, `KI-SETUP.md` und die passende Agenten-Datei:
 - `AGENTS.md` für Codex/GPT-basierte Coding-Agenten
 - `CLAUDE.md` für Claude Code
+- `GEMINI.md` für Gemini CLI
 
 Warte danach auf mein Startsignal.
 ```
@@ -69,6 +70,18 @@ Der genaue sichere Ablauf, die drei Ausführungspfade und die Git Human Gates st
 Für echte Daten wählst du anschließend unter [`execution-tracks/`](execution-tracks/README.md) zwischen Cloud-managed comfort, Hybrid-redacted und Local/On-Prem. Bei `vertraulich/Geschäftsgeheimnis` bleibt Local/On-Prem der Default; [`LOCAL-PRIVATE-SETUP.md`](LOCAL-PRIVATE-SETUP.md) und [`SECURITY.md`](SECURITY.md) führen durch Datenwege, Rechte, Endpoint-Test und Human Gate. „Lokale Inferenz“ bezeichnet dabei nicht automatisch einen vollständig lokalen Workflow.
 
 Erst wenn Methode, Datenweg und Gates bestätigt sind, beschreibt [`AGENTIC-RESEARCH.md`](AGENTIC-RESEARCH.md) den optionalen begrenzten Experimentierpfad. Ohne freigegebenes Research Program und Eval Cases bleibt `Assist` aktiv; es startet kein Lauf.
+
+## Produktiv schreiben mit Agenten (Thesis-Arbeitsmodus)
+
+Für das Schreiben der eigentlichen Thesis gibt es einen Arbeitsmodus in einer privaten Arbeitskopie. Du steuerst Literaturauswertung, `literatur.bib`, die abschnittsweise Bearbeitung und den Projektstand über die Chats von Claude Code, Codex oder Gemini CLI. Alle Agenten lesen denselben Stand aus `thesis/STAND.md` und `thesis/GLIEDERUNG.md`, sichern jede Arbeitseinheit in deinem privaten GitHub-Repository und kennzeichnen ihren Beitrag im Commit. Daraus erzeugt `scripts/ki-erklaerung.py` den Entwurf deiner KI-Erklärung.
+
+Beispiel für den Setup-Prompt:
+
+```text
+Richte eine DHBW-Thesis mit internem Schutzbedarf im Thesis-Arbeitsmodus ein. Methode DSR, mit Betreuung abgestimmt. Ausführungspfad Cloud-managed für meinen Text, meine Notizen und Literatur. Lege mein privates GitHub-Repository thesis an.
+```
+
+Regeln für alle Agenten: [`THESIS-ARBEITSMODUS.md`](THESIS-ARBEITSMODUS.md). Ablauf der Einrichtung: [`KI-SETUP.md`](KI-SETUP.md), Abschnitt „Thesis-Arbeitsmodus einrichten“. Dafür brauchst du zusätzlich ein GitHub-Konto und die GitHub CLI (<https://cli.github.com>).
 
 ## Repository lokal verifizieren
 
@@ -164,6 +177,7 @@ TeXShop liegt MacTeX bei (unter `/Applications/TeX/TeXShop.app`).
 Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden müssen:
 
 - `main.tex`: `\hypersetup{...}` (PDF-Metadaten), Deckblatt (Titel, Name, Matrikelnummer, Kurs, Betreuer, Abgabedatum), Selbstständigkeitserklärung (Titel der Arbeit).
+- `kapitel/`: ein Kapitel je Datei, eingebunden in `main.tex`. Die drei Beispielkapitel ersetzen; neue Kapitel als `kapitel/NN-name.tex` anlegen und in `main.tex` ergänzen.
 - `literatur.bib`: Beispiel-Einträge durch deine echten Quellen ersetzen.
 - Glossar-Einträge in `main.tex` (Bereich „GLOSSAR-EINTRÄGE") nach Bedarf erweitern oder ersetzen.
 - Optional: DHBW-Logo als `dhbw-logo.png` ergänzen und im Deckblatt einkommentieren. (Aus rechtlichen Gründen ist das Logo hier nicht beigelegt — frag bei deiner DHBW nach der offiziellen Datei.)
@@ -176,17 +190,21 @@ Suche im Code nach `%% PLACEHOLDER` — alle Stellen, die personalisiert werden 
 ├── KI-SETUP.md                            # Ablauf für "Ja, bitte einrichten"
 ├── CLAUDE.md                              # Projektanweisungen für Claude Code
 ├── AGENTS.md                              # Projektanweisungen für OpenAI Codex / GPT-Agenten
+├── GEMINI.md                              # Projektanweisungen für Gemini CLI
+├── THESIS-ARBEITSMODUS.md                 # gemeinsamer Vertrag für produktives Schreiben mit Agenten
 ├── RESEARCH-START.md                      # optionaler Methoden- und Autonomie-Router
 ├── DSR-START.md                           # manueller DSR-Pfad nach bestätigter Methodenwahl
 ├── AGENTIC-RESEARCH.md                    # begrenzter Research-Loop mit Human Gates
 ├── LOCAL-PRIVATE-SETUP.md                 # Preflight für Desktop-local und Shared On-Prem
 ├── SECURITY.md                            # Trust Boundaries, Rechte, Egress und Meldeweg
-├── main.tex                               # Hauptdokument (Präambel + Kapitel)
+├── main.tex                               # Hauptdokument (Präambel, Verzeichnisse, Erklärungen)
+├── kapitel/                               # ein Kapitel je Datei, eingebunden in main.tex
 ├── literatur.bib                          # Bibliographie (BibTeX-Format)
 ├── .gitignore                             # ignoriert LaTeX-Build-Artefakte
 ├── scripts/                               # lokaler, auch in CI verwendeter Verify-Vertrag
 ├── profiles/                              # Einstiege für Thesis, Unternehmen und Informatik
 ├── templates/research/                    # Research-Templates inklusive Projektmanifest
+├── templates/thesis/                      # Stand, Gliederung und Literaturnotiz für den Arbeitsmodus
 ├── execution-tracks/                      # Cloud-, Hybrid- und Local/On-Prem-Verträge
 ├── models/                                # datierte, nicht empfehlende Modellbeispiele
 ├── evals/                                 # Vertrag für Exploration und gesperrte Bestätigung
@@ -219,6 +237,8 @@ im Verlauf der Arbeit.
 ```
 
 `CLAUDE.md`, der Claude-Code-Skill und `AGENTS.md` enthalten Regeln, die die KI dazu bringen, am Sessionende ungefragt einen Eintrag anzuhängen — du musst sie nur einmal anlegen.
+
+Im [Thesis-Arbeitsmodus](THESIS-ARBEITSMODUS.md) ersetzen die KI-Angaben in den Commits diese Einträge: `scripts/ki-erklaerung.py` erzeugt daraus eine Übersicht nach Arbeitsschritt und KI-System als Entwurf für die Erklärung zur Verwendung von KI-Systemen.
 
 ## Lizenz
 
