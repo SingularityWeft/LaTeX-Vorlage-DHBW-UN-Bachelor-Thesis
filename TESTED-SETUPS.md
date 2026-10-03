@@ -67,6 +67,17 @@ Dies ist eine technische CI-Prüfung, **kein Anfänger-Walkthrough** und keine F
 - **Gehosteter Lauf:** Workflow-Run `37115250746` auf dem Merge-Commit `c5eeee2` (Head `664043a`, Basis `b6ea4bb`). Job `verify-windows`: `windows-latest`, Git 2.55.0.windows.5, Git Bash, `core.autocrlf=true`; gesperrte Dateien im Arbeitsbaum LF; Python 3.12.10 über `python3`; 156 Linkziele, Strukturprüfung, 19 Tests und `main.pdf` PASS; LaTeX sichtbar `SKIP`. Job `verify` (Ubuntu, `--require-latex`) im selben Lauf: PASS mit vollständigem LaTeX-Build, 11 Seiten.
 - **Grenzen:** kein LaTeX-Build unter Windows, kein Test von TeX Live oder MiKTeX unter Windows, keine Claude- oder Codex-Clientprüfung unter Windows. Der Python-Fallback lief auf dem Runner nicht, weil dort `python3` vorhanden war; geprüft ist er nur in der lokalen Simulation. Ein Anfänger-Durchlauf unter Windows steht aus.
 
+## Thesis-Arbeitsmodus (technische Prüfung, 2026-10-03)
+
+Technische Prüfung des neuen Arbeitsmodus aus [`THESIS-ARBEITSMODUS.md`](THESIS-ARBEITSMODUS.md), **kein Anfänger-Durchlauf** und keine Freigabe. Der Release-Status oben bleibt **BLOCKIERT**.
+
+- **Kapitel je Datei:** Die drei Beispielkapitel liegen in `kapitel/` und werden per `\input` eingebunden. Vollbuild der alten und der neuen Fassung unter Linux mit TeX Live 2023: je 11 Seiten, keine LaTeX-Fehler, per `pdftotext` identischer Text bis auf das Build-Datum.
+- **Verify:** `bash scripts/verify-repo.sh --require-latex` lokal PASS: 163 relative Linkziele, Strukturprüfung inklusive neuer Konsistenzprüfung der Agenten-Dateien, 19 bestehende und 3 neue Tests, LaTeX-Build.
+- **KI-Erklärung:** `scripts/ki-erklaerung.py` mit drei Tests an synthetischen Git-Repositories: Auswertung ab dem Commit, der `thesis/STAND.md` anlegt; Gruppierung nach Arbeitsschritt; Hinweise auf fehlende oder unbekannte Angaben. Ein Testlauf fand einen Fehler (Platzhalter als unbekannter Arbeitsschritt gemeldet), der vor dem Commit behoben wurde.
+- **Einrichtung simuliert (Linux):** Arbeitskopie aus einem lokalen Bare-Repository als Vorlage, Schritte 3–5 aus `KI-SETUP.md`, ein lokales Bare-Repository statt `gh repo create` als privates `origin`. Ergebnis: Push zu `origin` erfolgreich; Push zu `vorlage` mit der gesperrten Push-Adresse abgewiesen (Exit-Code 128); `literatur/pdf/` und `.obsidian/` ignoriert; der KI-Erklärungsentwurf enthält genau die beiden Commits mit KI-Angaben seit der Einrichtung.
+- **Allowlist:** zwei neue Git-Regel-Zeilen aus `THESIS-ARBEITSMODUS.md`, beide Verbote (`git add -A`/`git add .` sowie `reset --hard`, `push --force`, `clean -f`).
+- **Grenzen:** `gh repo create` gegen GitHub, die Anmeldung mit GitHub CLI und echte Läufe mit Claude Code, Codex oder Gemini CLI sind nicht getestet. Unter Windows sind nur die CI-Prüfungen belegt.
+
 ## Baseline und Rückbauanker
 
 Der annotierte Tag `baseline-before-research-upgrade-2026-09-08` wurde direkt vom öffentlichen Remote in eine separate Arbeitskopie geklont:
@@ -90,13 +101,19 @@ Der Tag wurde weder verschoben noch neu erzeugt. Rollback bleibt ein normaler Re
 
 ## Vorbereitete unabhängige Anfänger-Walkthroughs
 
-Es standen keine drei unbeteiligten realen Testpersonen zur Verfügung. Die Walkthroughs wurden **nicht simuliert** und sind **nicht bestanden**. Außerdem zeigt der öffentliche Link bis zum separaten Push-Gate noch nicht auf die lokalen Upgrade-Commits. Folgende Aufgaben sind nach einem freigegebenen Push mit ausschließlich synthetischen Angaben durchzuführen:
+Es standen keine drei unbeteiligten realen Testpersonen zur Verfügung. Die Walkthroughs wurden **nicht simuliert** und sind **nicht bestanden**. Außerdem zeigt der öffentliche Link bis zum separaten Push-Gate noch nicht auf die lokalen Upgrade-Commits. Folgende Aufgaben sind nach einem freigegebenen Push durchzuführen; W-02 und W-03 mit ausschließlich synthetischen Angaben, W-01 als produktiver Durchlauf nach der Revision unten:
 
-### W-01 – DHBW-Thesis
+### W-01 – DHBW-Thesis im Arbeitsmodus (Revision 2026-10-03)
 
-Nur den öffentlichen Repo-Link und diese Aufgabe geben: „Richte eine öffentliche synthetische DHBW-Thesis ein. Finde den LaTeX-Primärweg, lass die Methode offen und erreiche einen Research-Workspace sowie eine gebaute PDF. Gib keine echten Namen, Matrikel-, Standort-, Betreuungs- oder Kontaktdaten ein.“
+**Revision durch die Maintainerin, 2026-10-03:** W-01 prüft produktives Arbeiten, nicht eine synthetische Einrichtung. Eine reale Person richtet ihre echte Thesis in einer privaten Arbeitskopie im [Thesis-Arbeitsmodus](THESIS-ARBEITSMODUS.md) ein und arbeitet damit. Eine schriftliche Anleitung und Hilfe sind erlaubt; Anlass und Umfang jeder Hilfe werden protokolliert. Forschungsdaten Dritter bleiben hinter dem Data/Ethics Gate. Die frühere synthetische W-01-Aufgabe entfällt.
 
-Erwartet: LaTeX-Primärweg und optionalen Research-Weg unterscheiden; Profil und Schutzbedarf wählen; lokale Standort-/Studiengangs-/Betreuungsvorgaben als offen erkennen; `research/PROJECT.md` und `main.pdf` erreichen.
+Erwartet:
+
+1. Ein Agent richtet den Arbeitsmodus ein, einschließlich privatem GitHub-Repository und gesperrtem Vorlagen-Remote, und baut `main.pdf`.
+2. Über die Agenten-Chats entstehen mindestens eine Literaturnotiz mit geprüftem BibTeX-Eintrag und ein Abschnitt mit Status in `thesis/GLIEDERUNG.md`.
+3. Ein zweiter Agent (Codex oder Gemini CLI) setzt nach einem Neustart ohne Chat-Vorwissen korrekt am Stand aus `thesis/STAND.md` fort.
+4. Jede Arbeitseinheit liegt als Commit mit KI-Angaben auf `origin`.
+5. `scripts/ki-erklaerung.py` erzeugt einen Entwurf, den die Person als zutreffend bestätigt oder korrigiert.
 
 ### W-02 – Unternehmensprojekt
 
@@ -116,7 +133,7 @@ Erwartet: Informatikprofil und internen Schutzbedarf wählen; Redaktions-/Egress
 - **Aufgabe/Profil und Startpunkt:** öffentlicher Repo-Link, kein weiterer Kontext;
 - **Beginn/Ende/Dauer:** mit Zeitzone;
 - **Weg:** gelesene Einstiegsdateien, Eingaben, Irrwege und Rückfragen;
-- **Hilfe:** keine mündliche Hilfe; falls doch, exakter Anlass und Umfang;
+- **Hilfe:** W-02 und W-03 ohne mündliche Hilfe, falls doch mit exaktem Anlass und Umfang; bei W-01 sind Anleitung und Hilfe erlaubt und werden mit Anlass und Umfang protokolliert;
 - **Erreichtes Artefakt:** Pfad, Test-/Buildstatus, offene Gates;
 - **Befunde:** jeweils `release-blocker`, `friction` oder `question` mit reproduzierbarem Schritt;
 - **Folge:** Release-Blocker beheben und den betroffenen Pfad von einer anderen unbeteiligten Person vollständig neu testen.
