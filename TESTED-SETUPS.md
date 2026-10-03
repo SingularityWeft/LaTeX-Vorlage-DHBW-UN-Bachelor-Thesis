@@ -56,6 +56,17 @@ Die Codex-Lücke ist kein Beleg gegen die Repository-Dateilogik: Der erzwungene 
 - Ein gehosteter GitHub-Actions-Lauf ist noch **nicht** möglich, weil keine Upgrade-Commits gepusht wurden. Er bleibt eigenes Push-Human-Gate und darf nicht durch den lokalen Lauf ersetzt werden.
 - Der Vollbuild erzeugt 11 A4-Seiten und 65.882 Byte ohne LaTeX-Fehler. Verbleibend: 1 Overfull- und 19 Underfull-`hbox`-Warnungen, eine doppelte `page.i`-PDF-Destination, eine fehlende Glossar-Destination sowie zwei ungenutzte `caption`-Setups. Alle 11 Seiten wurden gerendert und visuell geprüft; kein Text ist abgeschnitten oder überlagert. Der lange Titel der KI-Erklärung und die Tabellenumbrüche bleiben sichtbar lesbar.
 
+## Windows-CI (technische Prüfung, 2026-10-03)
+
+Dies ist eine technische CI-Prüfung, **kein Anfänger-Walkthrough** und keine Freigabe. Der Release-Status oben bleibt **BLOCKIERT**.
+
+- **Anlass:** Git for Windows checkt standardmäßig mit `core.autocrlf=true` aus. Ohne `.gitattributes` erhielten alle Textdateien CRLF: `scripts/check-repository.py` meldete fünf Hash-Fehler (drei gesperrte Daten-/Eval-Dateien, zwei Rohoutputs), und `scripts/verify-repo.sh` brach bereits in Zeile 2 ab (`set: pipefail: invalid option name`). Lokal reproduziert mit einem Klon von `b6ea4bb` und `core.autocrlf=true`.
+- **Änderung (Pull Request 1, Commit `664043a`):** `.gitattributes` mit `* text=auto eol=lf` und Binärformaten; Python-Fallback `python3` → `python` → `py -3`, bei dem jeder Kandidat tatsächlich eine Python-3-Version ausgeben muss (Store-Platzhalter), sowie `PYTHONUTF8=1`; Allowlist-Pfade in POSIX-Form; Workflow-Job `verify-windows`. Der Ubuntu-Job ist unverändert.
+- **Gesperrte Hashes:** `examples/onboarding-assistant/evals/locked-hashes.json` und die Rohoutput-Hashes der Run Records sind unverändert; Daten-, Eval- und Artefaktdateien wurden nicht geändert.
+- **Lokaler Nachweis (Linux):** Klon mit `core.autocrlf=true` vor dem Fix: 5 Hash-Fehler. Nach dem Fix mit `core.autocrlf=true`: Verify PASS, LaTeX `SKIP`. LF-Gegenprobe mit `core.autocrlf=input`: PASS. Python-Fallback mit simulierten Store-Platzhaltern für `python3` und `python`: wählt `py -3` und läuft durch; ohne lauffähiges Python Abbruch mit Hinweis.
+- **Gehosteter Lauf:** Workflow-Run `37115250746` auf dem Merge-Commit `c5eeee2` (Head `664043a`, Basis `b6ea4bb`). Job `verify-windows`: `windows-latest`, Git 2.55.0.windows.5, Git Bash, `core.autocrlf=true`; gesperrte Dateien im Arbeitsbaum LF; Python 3.12.10 über `python3`; 156 Linkziele, Strukturprüfung, 19 Tests und `main.pdf` PASS; LaTeX sichtbar `SKIP`. Job `verify` (Ubuntu, `--require-latex`) im selben Lauf: PASS mit vollständigem LaTeX-Build, 11 Seiten.
+- **Grenzen:** kein LaTeX-Build unter Windows, kein Test von TeX Live oder MiKTeX unter Windows, keine Claude- oder Codex-Clientprüfung unter Windows. Der Python-Fallback lief auf dem Runner nicht, weil dort `python3` vorhanden war; geprüft ist er nur in der lokalen Simulation. Ein Anfänger-Durchlauf unter Windows steht aus.
+
 ## Baseline und Rückbauanker
 
 Der annotierte Tag `baseline-before-research-upgrade-2026-09-08` wurde direkt vom öffentlichen Remote in eine separate Arbeitskopie geklont:

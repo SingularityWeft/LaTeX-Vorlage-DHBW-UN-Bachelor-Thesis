@@ -33,3 +33,30 @@ jobs:
 
       - name: Gemeinsamen Verify-Vertrag ausführen
         run: bash scripts/verify-repo.sh --require-latex
+
+  verify-windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # Git-for-Windows-Standard ausdrücklich setzen: Zeilenenden werden beim
+      # Auschecken umgewandelt, sofern .gitattributes nichts anderes festlegt.
+      - name: Windows-Standard core.autocrlf=true setzen
+        run: |
+          git config --global core.autocrlf true
+          echo "core.autocrlf=$(git config --global --get core.autocrlf)"
+
+      # actions/checkout v7.0.1, derselbe gepinnte Commit wie im Ubuntu-Job.
+      - name: Repository auschecken
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Zeilenenden der gesperrten Dateien anzeigen
+        run: git ls-files --eol examples/onboarding-assistant/data examples/onboarding-assistant/evals examples/onboarding-assistant/runs
+
+      # Ohne LaTeX-Toolchain; der Build-Schritt meldet einen sichtbaren Skip.
+      - name: Gemeinsamen Verify-Vertrag ohne LaTeX ausführen
+        run: bash scripts/verify-repo.sh

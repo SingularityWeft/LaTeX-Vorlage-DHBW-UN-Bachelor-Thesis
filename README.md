@@ -86,7 +86,7 @@ bash scripts/verify-repo.sh --require-latex
 
 Der Musterscan ist nur ein Frühwarncheck und keine Garantie, alle Secrets, personenbezogenen Daten oder lokalen Artefakte zu erkennen. Deshalb bleibt vor Veröffentlichung ein menschliches Review erforderlich. Die dokumentierte Allowlist enthält ausschließlich drei Arten erklärter Treffer: den synthetischen Benutzerpfad-Platzhalter in `vortrag/anleitungen/03-system-erklaerung.md`, exakt benannte Verbotsformulierungen in den Setup-/Agentenanweisungen sowie die pfad- und anzahlgebundene Umgebungsvariablen-/Synthetik-Evidenz der bestehenden Live-Vertragstests. Neue Treffer stoppen die Prüfung bis zur manuellen Einordnung; echte Zugangsdaten werden niemals allowlistet.
 
-Der Workflow [`.github/workflows/verify.yml`](.github/workflows/verify.yml) nutzt keine LLMs, Modellhosts oder Benutzer-Credentials. Er installiert die offizielle Ubuntu-TeX-Toolchain und ruft ausschließlich den obigen Verify-Vertrag mit `--require-latex` auf.
+Der Workflow [`.github/workflows/verify.yml`](.github/workflows/verify.yml) nutzt keine LLMs, Modellhosts oder Benutzer-Credentials. Er installiert die offizielle Ubuntu-TeX-Toolchain und ruft ausschließlich den obigen Verify-Vertrag mit `--require-latex` auf. Ein zweiter Job prüft denselben Vertrag unter Windows mit Git Bash und dem Git-Standard `core.autocrlf=true`, ohne LaTeX; der Build-Schritt meldet dort einen sichtbaren Skip.
 
 Der aktuelle Abnahmestand einschließlich Clean-Clone-Matrix, Baseline-Vergleich, visueller PDF-Prüfung und noch offener Human Gates ist in [`TESTED-SETUPS.md`](TESTED-SETUPS.md) dokumentiert. Ein lokaler grüner Verify-Lauf ersetzt weder die drei unabhängigen Anfänger-Walkthroughs noch Owner-Freigabe und gehosteten CI-Lauf.
 
