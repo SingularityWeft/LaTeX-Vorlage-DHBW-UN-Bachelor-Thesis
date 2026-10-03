@@ -207,7 +207,8 @@ def text_files() -> list[tuple[str, str]]:
     decoded: list[tuple[str, str]] = []
     for path in repository_files():
         try:
-            decoded.append((str(path.relative_to(ROOT)), path.read_text(encoding="utf-8")))
+            # as_posix: Allowlist-Schlüssel nutzen unter jedem Betriebssystem "/".
+            decoded.append((path.relative_to(ROOT).as_posix(), path.read_text(encoding="utf-8")))
         except UnicodeDecodeError:
             continue
     return decoded
@@ -423,6 +424,8 @@ def check_workflow(failures: list[str]) -> None:
     content = path.read_text(encoding="utf-8")
     if "runs-on: ubuntu-24.04" not in content:
         fail(failures, "CI muss auf dem festen offiziellen Runner ubuntu-24.04 laufen")
+    if "runs-on: windows-latest" not in content or "core.autocrlf true" not in content:
+        fail(failures, "CI braucht den Windows-Job mit dem Git-Standard core.autocrlf=true")
     if "permissions:\n  contents: read" not in content:
         fail(failures, "CI benötigt explizit nur contents: read")
     if "bash scripts/verify-repo.sh --require-latex" not in content:
@@ -432,7 +435,7 @@ def check_workflow(failures: list[str]) -> None:
     if re.search(r"\b(?:ollama|openai|anthropic|model[-_ ]?host|llm)\b", content, re.IGNORECASE):
         fail(failures, "CI darf kein LLM und keinen Modellhost aufrufen")
     uses = re.findall(r"^\s*-?\s*uses:\s*([^\s#]+)", content, re.MULTILINE)
-    if uses != [f"actions/checkout@{CHECKOUT_SHA}"]:
+    if not uses or set(uses) != {f"actions/checkout@{CHECKOUT_SHA}"}:
         fail(failures, f"CI-Actions müssen exakt auf freigegebene Commit-SHAs gepinnt sein: {uses}")
 
 

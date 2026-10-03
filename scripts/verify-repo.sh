@@ -16,14 +16,41 @@ esac
 
 cd "$repo_root"
 
+# Unter Windows ist sonst die ANSI-Codepage der Standard beim Lesen von Dateien.
+export PYTHONUTF8=1
+
+# Unter Windows fehlt python3 oft, oder es ist nur der Microsoft-Store-Platzhalter,
+# der keinen Interpreter startet. Deshalb muss jeder Kandidat tatsächlich Python 3 ausführen.
+python_cmd=()
+for candidate in "python3" "python" "py -3"; do
+  read -r -a parts <<< "$candidate"
+  if ! command -v "${parts[0]}" >/dev/null 2>&1; then
+    continue
+  fi
+  version="$("${parts[@]}" -c 'import sys; print("%d.%d.%d" % sys.version_info[:3])' 2>/dev/null)" || continue
+  version="${version%$'\r'}"
+  if [[ "$version" =~ ^3\.[0-9]+\.[0-9]+$ ]]; then
+    python_cmd=("${parts[@]}")
+    echo "Python: ${candidate} (${version})"
+    break
+  fi
+done
+
+if (( ${#python_cmd[@]} == 0 )); then
+  echo "Kein lauffähiges Python 3 gefunden (geprüft: python3, python, py -3)." >&2
+  echo "Unter Windows: Python 3 von python.org installieren und den Store-Platzhalter" >&2
+  echo "unter Einstellungen > Apps > App-Ausführungsaliase für python/python3 abschalten." >&2
+  exit 1
+fi
+
 echo "[1/5] Relative Markdown-Links"
-python3 scripts/check-markdown-links.py
+"${python_cmd[@]}" scripts/check-markdown-links.py
 
 echo "[2/5] Repository-, Research- und Sicherheitsvertrag"
-python3 scripts/check-repository.py
+"${python_cmd[@]}" scripts/check-repository.py
 
 echo "[3/5] Synthetische Offline- und Vertrags-Tests"
-python3 -m unittest discover -s examples/onboarding-assistant/tests -v
+"${python_cmd[@]}" -m unittest discover -s examples/onboarding-assistant/tests -v
 
 echo "[4/5] Vorhandene PDF"
 if [[ ! -s main.pdf ]]; then

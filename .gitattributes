@@ -1,0 +1,24 @@
+# Zeilenenden im Repository und im Arbeitsbaum einheitlich als LF halten,
+# auch unter Windows mit dem Git-Standard core.autocrlf=true. Die gesperrten
+# Hashes in examples/onboarding-assistant hängen an den exakten Bytes.
+* text=auto eol=lf
+
+# Binärdateien nie normalisieren.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.eps binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
