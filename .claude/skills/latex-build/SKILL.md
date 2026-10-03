@@ -27,7 +27,7 @@ pdflatex main.tex      # 3. Pass — finalisiert Inhaltsverzeichnis
 ## Wann NICHT kompilieren
 
 - Nur README/Notes geändert (keine `.tex` / `.bib` / `.glo` Edits) — sag das, kein Recompile nötig.
-- `pdflatex` / `biber` nicht gefunden — User auf MacTeX-Installation hinweisen (<https://www.tug.org/mactex/>).
+- `pdflatex` / `biber` nicht gefunden — User auf die Installation hinweisen (macOS: MacTeX, <https://www.tug.org/mactex/>; Windows und Linux: TeX Live, <https://www.tug.org/texlive/>). Unter Windows danach die Claude-App neu starten, damit sie die Programme findet.
 
 ## Light Variant (nur Textänderung)
 

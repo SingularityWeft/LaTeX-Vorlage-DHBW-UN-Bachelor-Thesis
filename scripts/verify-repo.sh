@@ -51,6 +51,7 @@ echo "[2/5] Repository-, Research- und Sicherheitsvertrag"
 
 echo "[3/5] Synthetische Offline- und Vertrags-Tests"
 "${python_cmd[@]}" -m unittest discover -s examples/onboarding-assistant/tests -v
+"${python_cmd[@]}" -m unittest discover -s scripts/tests -v
 
 echo "[4/5] Vorhandene PDF"
 if [[ ! -s main.pdf ]]; then

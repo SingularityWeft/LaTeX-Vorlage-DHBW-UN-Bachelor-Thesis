@@ -36,6 +36,7 @@
 
 # Lokaler Python-Bytecode der Repository-Prüfer
 scripts/__pycache__/
+scripts/tests/__pycache__/
 
 # KI-Tool Worktrees (Claude Code agenten-features)
 # .claude/skills/ ist explizit getrackt — siehe weiter unten
@@ -52,3 +53,9 @@ research/private/
 artifact/private/
 runs/private/
 models/cache/
+
+# Thesis-Arbeitsmodus: Literatur-PDFs bleiben lokal (siehe THESIS-ARBEITSMODUS.md)
+literatur/pdf/
+
+# Obsidian-Arbeitsbereich, falls der Ordner auch als Vault geöffnet wird
+.obsidian/

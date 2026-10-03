@@ -17,12 +17,13 @@ Ein reines Chatmodell ohne lokalen Datei- und Terminalzugriff kann den Ablauf nu
 1. Vor echten Projektdaten werden nur fehlendes Profil und fehlender Schutzbedarf erfragt.
 2. `Assist` ist die Standard-Autonomiestufe. `Bounded autonomous` ist ohne den Vertrag aus `AGENTIC-RESEARCH.md` und ein bestätigtes Research Program nicht zulässig und wird auf `Assist` zurückgesetzt.
 3. Ist die Methodenwahl uneindeutig, bleibt sie `offen`; der Agent entscheidet sie nicht automatisch.
-4. Vor einem bestätigten Data/Ethics Gate werden ausschließlich abstrakte oder synthetische Angaben verwendet.
+4. Vor einem bestätigten Data/Ethics Gate werden ausschließlich abstrakte oder synthetische Angaben verwendet. Im Thesis-Arbeitsmodus gilt das für Forschungsdaten Dritter; eigener Text, eigene Notizen und Literatur folgen der Freigabe aus [`THESIS-ARBEITSMODUS.md`](THESIS-ARBEITSMODUS.md).
 5. Bestehende Dateien, vorhandene Änderungen und der aktuelle Git-Staging-Bereich werden nicht überschrieben, übernommen oder bereinigt.
 6. Remotes werden nicht automatisch geändert. Es gibt keinen automatischen Commit und keinen automatischen Push.
 7. Installationen und Downloads erfordern eine ausdrückliche Freigabe.
 8. Geheimnisse, personenbezogene Daten und vertrauliche Inhalte werden weder erfunden noch in Prompts, Logs oder Commits aufgenommen.
 9. Bei `vertraulich/Geschäftsgeheimnis` sind Cloudmodelle, Websuche und Remote-MCPs bis zum freigegebenen Preflight aus [`LOCAL-PRIVATE-SETUP.md`](LOCAL-PRIVATE-SETUP.md) ausgeschaltet.
+10. Den Thesis-Arbeitsmodus richtet der Agent nur auf ausdrücklichen Wunsch ein, nach dem Abschnitt „Thesis-Arbeitsmodus einrichten“ am Ende dieser Datei. Ab seiner Einrichtung gelten für Git, Datenweg und Provenance die Regeln aus [`THESIS-ARBEITSMODUS.md`](THESIS-ARBEITSMODUS.md).
 
 ## Ablauf für den Coding-Agenten
 
@@ -85,6 +86,8 @@ Lege den Ausführungspfad aus dem Schutzbedarf fest:
 | vertraulich/Geschäftsgeheimnis | Local/On-Prem, nicht still überschreibbar | aus; bis zum freigegebenen Private-Track-Preflight auch keine Cloudmodelle, Websuche oder Remote-MCPs | Datenschutz-, Security- und Data/Ethics-Freigabe |
 
 Ein sichererer Pfad darf gewählt werden. Ein weniger restriktiver Pfad braucht eine ausdrücklich dokumentierte menschliche Freigabe. Dieses Setup wählt keine Runtime, kein Modell und keinen Endpoint.
+
+Verlangt der User den Thesis-Arbeitsmodus mit Cloud-managed comfort für eigenen Text, eigene Notizen und Literatur, ist das diese Freigabe. Dokumentiere sie mit Datum und den genutzten Agenten-Anbietern in `research/PROJECT.md`. Forschungsdaten Dritter folgen weiter dem Pfad aus der Tabelle.
 
 Die technischen und organisatorischen Grenzen des gewählten Pfads stehen in [`execution-tracks/README.md`](execution-tracks/README.md). Vor echten Daten wird das [`Deployment-Manifest`](templates/research/deployment-manifest.md) manuell ausgefüllt und gemäß [`SECURITY.md`](SECURITY.md) freigegeben. Das Workspace-Setup selbst startet weiterhin keine Runtime und konfiguriert keinen Endpoint.
 
@@ -175,3 +178,38 @@ Melde kompakt und vollständig:
 - nächsten sicheren Prompt.
 
 Geeigneter nächster Prompt: „Prüfe mit mir Methodenwahl, Datenweg und Human Gates, ohne echte Projektdaten zu importieren.“
+
+## Thesis-Arbeitsmodus einrichten (private Arbeitskopie)
+
+**Auslöser:** Der User verlangt im Setup-Prompt oder danach ausdrücklich den Thesis-Arbeitsmodus, ein eigenes privates Repository oder produktives Schreiben mit Agenten. Der Modus ist für das Profil DHBW-Thesis gedacht; für andere Profile nur auf ausdrücklichen Wunsch. Regeln für die Zeit danach: [`THESIS-ARBEITSMODUS.md`](THESIS-ARBEITSMODUS.md).
+
+Die ausdrückliche Anforderung gibt frei: das private Repository anlegen, die Remotes umstellen, die Einrichtungsdateien committen und hochladen und ab dann Commit und Push je Arbeitseinheit nach `THESIS-ARBEITSMODUS.md`. Sie ersetzt für die Einrichtungsdateien die beiden Git-Gates aus Schritt 6. Zeige vorher einmal den vollständigen Plan und warte auf die Bestätigung.
+
+1. **Voraussetzungen prüfen:** `git --version`, `gh --version` und `gh auth status`. Ist GitHub CLI nicht angemeldet, bitte den User, `gh auth login` einmal selbst auszuführen. Frage keine Zugangsdaten ab und speichere keine.
+2. **Plan zeigen:** Repository-Name (Vorschlag `thesis`), Sichtbarkeit privat, Remote-Umstellung, anzulegende Dateien, `.gitignore`-Prüfung und die Datenweg-Freigabe für `research/PROJECT.md`.
+3. **Dateien anlegen, nur wenn sie fehlen:**
+   - `thesis/STAND.md` aus `templates/thesis/stand.md`, mit der Zeile `Arbeitsmodus: produktiv` und den bekannten Eckdaten;
+   - `thesis/GLIEDERUNG.md` aus `templates/thesis/gliederung.md`, passend zu den Dateien in `kapitel/`;
+   - `literatur/notizen/README.md` mit einem Verweis auf `templates/thesis/literaturnotiz.md`;
+   - in `research/PROJECT.md` den Ausführungspfad Cloud-managed comfort für eigenen Text, eigene Notizen und Literatur als menschlich bestätigt, mit Datum und Agenten-Anbietern; das Data/Ethics Gate für Forschungsdaten Dritter bleibt offen.
+
+   Prüfe, dass `.gitignore` die Einträge `literatur/pdf/` und `.obsidian/` enthält.
+4. **Remotes und Branch umstellen:**
+
+   ```bash
+   git remote rename origin vorlage
+   git remote set-url --push vorlage KEIN-PUSH-IN-DIE-VORLAGE
+   git branch -m main
+   ```
+
+   Die ungültige Push-Adresse sperrt das Vorlagen-Remote technisch; Lesen und spätere Aktualisierungen aus der Vorlage bleiben möglich.
+5. **Einrichtung committen:** nur die eigenen Pfade, mit den KI-Angaben aus `THESIS-ARBEITSMODUS.md` und dem Arbeitsschritt `Projektorganisation`.
+6. **Privates Repository anlegen und hochladen:**
+
+   ```bash
+   gh repo create <name> --private --source . --remote origin --push
+   ```
+
+   Fehlt GitHub CLI, legt der User ein leeres privates Repository im Browser an und nennt die Adresse; der Agent fügt es als `origin` hinzu und lädt `main` hoch.
+7. **Prüfen:** `git remote -v` zeigt `origin` und `vorlage` mit gesperrter Push-Adresse; `gh repo view <name> --json visibility` meldet `PRIVATE`; `git status -sb` ist sauber und mit `origin/main` synchron.
+8. **Abschlussbericht:** Repository-Adresse und Sichtbarkeit, Remotes, angelegte Dateien, Datenweg, offene Human Gates und der nächste Prompt, zum Beispiel: „Lies den Stand und schlage die nächste Arbeitseinheit vor.“
