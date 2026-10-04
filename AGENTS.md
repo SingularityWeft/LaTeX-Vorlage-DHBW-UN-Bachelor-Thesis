@@ -66,7 +66,8 @@ pdflatex main.tex
 Nach jedem Build:
 - bestätige, dass `main.pdf` existiert und Dateigröße > 0 hat,
 - prüfe `main.log` auf neue `Error` / `!`-Zeilen und melde sie,
-- ignoriere "Underfull/Overfull hbox" (Layout-Warnungen).
+- ignoriere "Underfull/Overfull hbox" (Layout-Warnungen),
+- hat der User den Build verlangt: öffne `main.pdf` und nenne den Pfad; im Thesis-Arbeitsmodus gilt dafür `THESIS-ARBEITSMODUS.md`, Abschnitt „PDF zeigen und Kompilieren erklären“.
 
 Bei fehlendem `pdflatex` oder `biber`: User auf die Installation hinweisen (macOS: MacTeX, <https://www.tug.org/mactex/>; Windows und Linux: TeX Live, <https://www.tug.org/texlive/>), nicht weitermachen.
 

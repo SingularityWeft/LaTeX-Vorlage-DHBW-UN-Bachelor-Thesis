@@ -101,6 +101,16 @@ Agenten erfinden keine Quellen, Seitenzahlen oder DOIs. Eine über Suche gefunde
 - KI-geschriebene oder stark überarbeitete Abschnitte beginnen mit `% [KI-Vorschlag YYYY-MM-DD, <KI-System> — bitte prüfen]`. Erst wenn die Autorin oder der Autor den Abschnitt geprüft hat, entfernt der Agent den Marker und setzt den Status in `thesis/GLIEDERUNG.md` auf `geprüft`.
 - Statuswerte: `offen`, `Stichpunkte`, `Entwurf`, `überarbeitet`, `geprüft`, `final`.
 
+## PDF zeigen und Kompilieren erklären
+
+Viele Autorinnen und Autoren kennen LaTeX nicht. Nach jedem erfolgreichen Build auf Wunsch der Autorin oder des Autors (etwa „kompiliere“, „zeig mir die PDF“):
+
+1. **PDF öffnen:** `main.pdf` im Standardprogramm öffnen und den vollständigen Pfad nennen. Windows (PowerShell): `Invoke-Item main.pdf`; macOS: `open main.pdf`; Linux: `xdg-open main.pdf`. Ohne grafische Oberfläche nur den Pfad nennen.
+2. **Beim ersten Mal erklären:** Fehlt in `thesis/STAND.md` die Zeile `Kompilieren erklärt:` mit Datum, in zwei bis drei einfachen Sätzen erklären: Kompilieren setzt den LaTeX-Text aus `main.tex` und `kapitel/` mit Literatur und Verzeichnissen zur fertigen PDF zusammen. Die PDF heißt `main.pdf` und liegt im Projektordner. Eine bereits offene PDF zeigt erst nach dem nächsten Kompilieren den neuen Stand. Danach in `thesis/STAND.md` unter „Eckdaten“ `Kompilieren erklärt: YYYY-MM-DD` eintragen, damit andere Agenten die Erklärung nicht wiederholen.
+3. **Gesperrte PDF unter Windows:** Meldet `pdflatex` „I can't write on file `main.pdf`“, hält ein PDF-Programm die Datei offen. Die Autorin oder den Autor bitten, die PDF zu schließen, und den Build wiederholen.
+
+Bei Builds als Prüfschritt einer Arbeitseinheit (Schritt 5) wird die PDF nur geöffnet, wenn die Autorin oder der Autor das möchte.
+
 ## Was weiterhin Menschen entscheiden
 
 - Methodenwahl und Forschungsfrage;

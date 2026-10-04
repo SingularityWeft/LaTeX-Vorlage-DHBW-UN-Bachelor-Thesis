@@ -24,3 +24,4 @@ Arbeitsmodus: produktiv
 - **Abgabetermin:**
 - **Zitierweise:** Fußnoten mit `\footcite` (biblatex, `authoryear`)
 - **Genutzte Agenten:** [z. B. Claude Code, Codex, Gemini CLI]
+- **Kompilieren erklärt:** [nein / YYYY-MM-DD]

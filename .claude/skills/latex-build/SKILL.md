@@ -22,6 +22,7 @@ pdflatex main.tex      # 3. Pass — finalisiert Inhaltsverzeichnis
 - Bestätige: `main.pdf` existiert, Dateigröße > 0.
 - Prüfe `main.log` auf neue `Error` / `!` Zeilen und melde sie dem User.
 - "Underfull/Overfull hbox" sind Layout-Warnungen und normalerweise ignorierbar.
+- Hat der User den Build verlangt: `main.pdf` öffnen (Windows `Invoke-Item main.pdf`, macOS `open main.pdf`, Linux `xdg-open main.pdf`) und den Pfad nennen. Im Thesis-Arbeitsmodus zusätzlich `THESIS-ARBEITSMODUS.md`, Abschnitt „PDF zeigen und Kompilieren erklären“, beachten.
 - Wenn nicht-aufgelöste Referenzen (`??` im PDF) auftauchen: weitere `pdflatex`-Pässe nötig.
 
 ## Wann NICHT kompilieren
@@ -48,4 +49,5 @@ reicht. Für schnelle Iterationen beim Schreiben.
 | Glossar leer | `makeglossaries` vergessen | Sequenz mit `makeglossaries` durchlaufen |
 | `Package not found` | LaTeX-Paket fehlt | `tlmgr install <paketname>` (MacTeX) |
 | `sh: makeindex: command not found` beim `makeglossaries`-Aufruf | MacTeX nicht im `PATH` der aktuellen Shell | Vor dem Build setzen: `export PATH="/Library/TeX/texbin:$PATH"` (oder dauerhaft in `~/.zshrc` / `~/.bash_profile`) |
+| `I can't write on file main.pdf` (Windows) | PDF ist in einem PDF-Programm geöffnet | PDF schließen lassen, Build wiederholen |
 | Umlaute kaputt | Encoding-Mismatch | Editor auf UTF-8 stellen, `\usepackage[utf8]{inputenc}` prüfen |
